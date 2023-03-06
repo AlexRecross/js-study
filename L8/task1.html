@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task 1</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task2.html">Next</a>
+	<h1> Task 1 </h1>
+	<p> Write a function that returns the contents of the array in reverse. </p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+
+</body>
+<script type="text/javascript">
+	var fruits = ["Banana", "Orange","Apple", "Mango"];
+	document.getElementById('Before').innerHTML = fruits.join();
+
+	fruits.reverse();
+
+	// NOTE example of lo usage
+	console.log('fruits \n\t', fruits);
+
+	document.getElementById('After').innerHTML = fruits.join();
+</script>
+</html>
