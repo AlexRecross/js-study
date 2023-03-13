@@ -18,15 +18,46 @@
 	<div id="After"></div>
 
 </body>
+<script src="helper.js"></script>
 <script type="text/javascript">
-	var numbers = [8,6,9,3,8,2,6,1,9,1,4,7];
-	document.getElementById('Before').innerHTML = numbers.join();
 
-	var findDuplicates = numbers => numbers.filter((item, index) => numbers.indexOf(item) !== index)
-	var duplicates = findDuplicates(numbers);
-	// NOTE example of lo usage
-	console.log('duplicates \n\t', duplicates);
+	var numbers = genArr();
+	document.getElementById('Before').innerHTML = numbers.join(', ');
 
-	document.getElementById('After').innerHTML = duplicates.join();
+	// Task own implementation
+	// function isElementHasDuplication (arr, item, index) {
+	// 	for (; index < arr.length; index++) {
+	// 		var el = arr[index];
+
+	// 		if (item == el) {
+	// 			return true;
+	// 		}
+	// 	}
+	// }
+
+	// for (var index = 0; index < numbers.length; index++) {
+	// 	var item = numbers[index];
+	// 	console.log('array item', item);	
+
+	// 	if (isElementHasDuplication(numbers, item, index + 1)) {
+	// 		resDupl.push(item);
+	// 		console.log('duplicate found', item);	
+	// 	}
+	// }
+
+	// Task implementation using indexOf 
+
+	var resDupl = [];
+	for (var index = 0; index < numbers.length; index++) {
+		var item = numbers[index];
+		var dupIndex = numbers.indexOf(item, index + 1);
+		if ( dupIndex !== (-1)) {
+			resDupl.push(item);
+		}
+	}
+
+	console.log('duplicates \n\t', resDupl);
+
+	document.getElementById('After').innerHTML = resDupl.join();
 </script>
 </html>

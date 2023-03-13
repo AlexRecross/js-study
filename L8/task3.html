@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>task 3</title>
+	<title>Task 3</title>
 </head>
 <body>
 	<a href="./index.html">Home</a><br/>
@@ -18,13 +18,31 @@
 	<div id="After"></div>
 
 </body>
+<script src="helper.js"></script>
 <script type="text/javascript">
-	var numbers = [8,6,9,3,8,2,6,1,9,1,4,7];
-	document.getElementById('Before').innerHTML = numbers.join();
+	
+	var numbers = genArr(), res;
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+
+// task 
+
+	for (var index = 0; index < numbers.length; index++) {
+		var item = numbers[index];
+		console.log('array item', item);
+
+		if (item%2 == 1) {
+			console.log('odd', item, 'res', res);
+
+			if (!(item > res)) {
+				res = item;
+				console.log('reassign "res"', res);
+			}
+		}
+	}
 
 	
-	console.log('XXX \n\t', XXX);
+	console.log('numbers \n\t', numbers);
 
-	document.getElementById('After').innerHTML = XXX.join();
+	document.getElementById('After').innerHTML = res;
 </script>
 </html>

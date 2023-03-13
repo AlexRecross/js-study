@@ -3,13 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Task 1</title>
+	<title>Task 4</title>
 </head>
 <body>
 	<a href="./index.html">Home</a><br/>
-	<a href="task2.html">Next</a>
-	<h1> Task 1 </h1>
-	<p> Write a function that returns the contents of the array in reverse. </p>
+	<a href="task3.html">Prew</a>
+	<a href="task5.html">Next</a>
+	<h1> Task 4 </h1>
+	<p> Write a function to find the arithmetic mean of an array.</p>
 
 	<h2> Before </h2>
 	<div id="Before"></div>
@@ -19,20 +20,22 @@
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-
-	var numbers = genArr(), resRev = [];
+	var numbers = genArr();
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 
-	//Task
-	//numbers.reverse(); or
+	//task
+
+	var total = 0;
 
 	for (var index = 0; index < numbers.length; index++) {
 		var item = numbers[index];
-		resRev.unshift(item);
+		console.log('array item', item);
 
-		// NOTE example of lo usage
-		console.log('numbers \n\t', resRev);
+		total += item;
+		console.log('array total', total);
 	}
-	document.getElementById('After').innerHTML = resRev.join(', ');
+
+	document.getElementById('After').innerHTML = total / numbers.length;
+
 </script>
 </html>
