@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 5</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task4.html">Prew</a>
+	<a href="task6.html">Next</a>
+	<h1> Task 5 </h1>
+	<p>
+		Given a one-dimensional array of numbers. Write a script that determines the number positive array elements.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var numbers = genArr(10, -50, 50), result = [];
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	//Task
+
+	for (var index = 0; index < numbers.length; index++) {
+		var item = numbers[index];
+		console.log('array item', item);
+
+			if(item > 0) {
+			result.push(item);
+			console.log('positive elements', result);
+		}
+	}
+
+	document.getElementById('After').innerHTML = result.length;
+</script>
+</html>
