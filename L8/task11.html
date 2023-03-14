@@ -3,38 +3,36 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Task 8</title>
+	<title>Task 11</title>
 </head>
 <body>
 	<a href="./index.html">Home</a><br/>
-	<a href="task7.html">Prew</a>
-	<a href="task9.html">Next</a>
-	<h1> Task 8 </h1>
+	<a href="task10.html">Prew</a>
+	<a href="task12.html">Next</a>
+	<h1> Task 11 </h1>
 	<p>
-		Given a one-dimensional array of integers. Write a script that defines the number of elements that are multiples of 7.
+		Write a script that determines the number of elements one-dimensional array that matches the given array.
 	</p>
-
 	<h2> Before </h2>
 	<div id="Before"></div>
+	<div id="Bfr"></div>
 	<h2> After </h2>
 	<div id="After"></div>
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-	var numbers = genArr(50, 1, 10), result = [];
-	document.getElementById('Before').innerHTML = numbers.join(', ');
+	var numbers = genArr(10, 1, 10), nmbrs = genArr(10, 1, 10), result = [];
+	document.getElementById('Before' ).innerHTML = numbers.join(', ');
+	document.getElementById('Bfr' ).innerHTML = nmbrs.join(', ');
 	//Task
-
 	for (var index = 0; index < numbers.length; index++) {
 		var item = numbers[index];
-		console.log('array item', item);
-
-		if (item%7 == 0) {
+		var dupIndex = nmbrs.indexOf(item,);
+		
+		if ( dupIndex !== (-1)) {
 			result.push(item);
-			console.log('7th_elements', result);
 		}
 	}
-
 	document.getElementById('After').innerHTML = result.length;
 </script>
 </html>

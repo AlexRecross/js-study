@@ -21,7 +21,7 @@
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-		var numbers = genArr(20, 1, 10), result = [], minEl;
+	var numbers = genArr(20, 1, 10), result = [], minEl;
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 
 // task 
@@ -37,10 +37,8 @@
 	}
 
 	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index]
-
-		if (item == minEl) {
-			result.push(item)
+		if (numbers[index] == minEl) {
+			result.push(numbers[index])
 		}
 	}
 	console.log('result', result.length);

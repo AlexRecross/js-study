@@ -3,15 +3,15 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Task 8</title>
+	<title>Task 10</title>
 </head>
 <body>
 	<a href="./index.html">Home</a><br/>
-	<a href="task7.html">Prew</a>
-	<a href="task9.html">Next</a>
-	<h1> Task 8 </h1>
+	<a href="task9.html">Prew</a>
+	<a href="task11.html">Next</a>
+	<h1> Task 10 </h1>
 	<p>
-		Given a one-dimensional array of integers. Write a script that defines the number of elements that are multiples of 7.
+		Write a function that determines the number of the first maximum value in one-dimensional array of integers.
 	</p>
 
 	<h2> Before </h2>
@@ -21,20 +21,27 @@
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-	var numbers = genArr(50, 1, 10), result = [];
+	var numbers = genArr(10, 1, 10), result, maxEl;
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	//Task
-
 	for (var index = 0; index < numbers.length; index++) {
 		var item = numbers[index];
 		console.log('array item', item);
 
-		if (item%7 == 0) {
-			result.push(item);
-			console.log('7th_elements', result);
+		if (!(item < maxEl))  {
+			maxEl = item;
+			console.log('maximum element', maxEl)
+		}
+	}
+	
+	for (var index = numbers.length; index >= 0; index--) {
+		var item = numbers[index];
+		console.log('invert', item);
+		if (item == maxEl) {
+			result = index;
 		}
 	}
 
-	document.getElementById('After').innerHTML = result.length;
+	document.getElementById('After').innerHTML = result;
 </script>
 </html>
