@@ -24,15 +24,17 @@
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 
 	//Task
-	//numbers.reverse(); or
+		//numbers.reverse(); or
+	TEST();
 
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-		resRev.unshift(item);
-
-		// NOTE example of lo usage
-		console.log('numbers \n\t', resRev);
-	}
+	function TEST () {
+		for (var index = 0; index < numbers.length; index++) {
+			var item = numbers[index];
+			resRev.unshift(item);
+			console.log('numbers \n\t', resRev);
+		}
+	}	
+	
 	document.getElementById('After').innerHTML = resRev.join(', ');
 </script>
 </html>

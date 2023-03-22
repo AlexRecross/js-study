@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 20</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task19.html">Prew</a>
+	<a href="task21.html">Next</a>
+	<h1> Task 20 </h1>
+	<p>
+		An array of numbers with a dimension of 10 elements is given. Write a function that sorts the array in ascending or descending order, depending on the third function parameter. If it is equal to 1, the sort is in descending order, if it is 0, then in ascending. The first 2 parameters of the function are an array and its size, the third parameter default is 1.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+
+	var numbers = genArr(10, 1, 10);
+	// var numbers = [1,9,2,6,4,5,3,7,10,8];
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	//Task
+	
+
+	function compareNumbers(b, a) {
+  return a - b;
+	}
+
+	numbers.sort(compareNumbers);
+	console.log('sorted array', numbers);
+	
+
+
+	document.getElementById('After').innerHTML = numbers;
+</script>
+</html>

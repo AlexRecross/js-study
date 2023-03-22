@@ -24,25 +24,25 @@
 	var numbers = genArr(10, 1, 10), result, minEl;
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	//Task
+	function minimalEl(){
+		for (var index = 0; index < numbers.length; index++) {
+			var item = numbers[index];
+			console.log('array item', item);
 
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-		console.log('array item', item);
+			if (!(item > minEl))  {
+				minEl = item;
+				console.log('minimum element', minEl)
+			}
+			}
+		for (var index = 0; index < numbers.length; index++) {
+			var item = numbers[index];
 
-		if (!(item > minEl))  {
-			minEl = item;
-			console.log('minimum element', minEl)
+			if (item == minEl) {
+				result = index;
+			}
 		}
 	}
-
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-
-		if (item == minEl) {
-			result = index;
-		}
-	}
-
+	minimalEl();
 	document.getElementById('After').innerHTML = result;
 </script>
 </html>

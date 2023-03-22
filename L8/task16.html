@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 16</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task15.html">Prew</a>
+	<a href="task17.html">Next</a>
+	<h1> Task 16 </h1>
+	<p>
+		Write a script that uses two arrays to build a third array that is the intersection of the given ones.
+	</p>
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<div id="Bfr"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var numbers = genArr(10, 1, 10), nmbrs = genArr(10, 1, 10), result = [];
+	document.getElementById('Before' ).innerHTML = numbers.join(', ');
+	document.getElementById('Bfr' ).innerHTML = nmbrs.join(', ');
+	//Task
+	for (var index = 0; index < numbers.length; index++) {
+		var item = numbers[index];
+		var dupIndex = nmbrs.indexOf(item,);
+		
+		if ( dupIndex !== (-1)) {
+			result.push(item);
+			console.log('result', result);
+		}
+	}
+	document.getElementById('After').innerHTML = result;
+</script>
+</html>

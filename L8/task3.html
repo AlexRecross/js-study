@@ -25,22 +25,23 @@
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 
 // task 
+	function smallestOddNumber() {
+		for (var index = 0; index < numbers.length; index++) {
+			var item = numbers[index];
+			console.log('array item', item);
 
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-		console.log('array item', item);
+			if (item%2 == 1) {
+				console.log('odd', item, 'res', res);
 
-		if (item%2 == 1) {
-			console.log('odd', item, 'res', res);
-
-			if (!(item > res)) {
-				res = item;
-				console.log('reassign "res"', res);
+				if (!(item > res)) {
+					res = item;
+					console.log('reassign "res"', res);
+				}
 			}
 		}
 	}
-
 	
+	smallestOddNumber()
 	console.log('numbers \n\t', numbers);
 
 	document.getElementById('After').innerHTML = res;

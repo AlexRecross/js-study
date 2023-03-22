@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 18</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task17.html">Prew</a>
+	<a href="task19.html">Next</a>
+	<h1> Task 18 </h1>
+	<p>
+		Write a function that, for a given array of integers, determines the length To the longest "sawtooth" sequence of consecutive numbers: A sequence a1, a2, a3, … , an1, an is called sawtooth if it satisfies one of the following conditions:<br>1) a1 < a2 > a3 < … > an­1 < an <br>2) a1 > a2 < a3 > … < an­1 > an
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var numbers = genArr(20, 1, 10), tempSaw = [], saws =[], sawsFiltered = [], result = [];
+	// var numbers = [4,5,4,5,5,4,6,7,4,1,2,5,4,6], tempSaw = [], saws =[], sawsFiltered = [], result; 
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	//Task
+	
+	for (var i = 1; i < numbers.length; i++) {
+		var a1 = numbers[i-1], a2 = numbers[i], a3 = numbers[i+1];
+		console.log('a1', a1);
+		console.log('a2', a2);
+		console.log('a3', a3);
+		console.log('XYU', i);
+
+		// if (a1 < a2 && a2 >a3 || a1 > a2 && a2 < a3) {
+		// 	tempSaw.push(a1);
+		// 	console.log('temp', tempSaw);
+		// } else {
+		// 		tempSaw.push(a1);
+		// 		tempSaw.push(a2);
+		// } else if (tempSaw.length < 2) {
+		// 		saws.push(tempSaw.length);
+		// 		console.log('saws', saws);
+		// 		var tempSaw = [];
+		// } else {
+		// 		var tempSaw = [];
+		// }
+	
+		if (a1 < a2 && a2 >a3 || a1 > a2 && a2 < a3) {
+			tempSaw.push(a1);
+			console.log('temp', tempSaw);
+		} else {
+			tempSaw.push(a1);
+			tempSaw.push(a2);
+			saws.push(tempSaw.length);
+			console.log('saws', saws);
+			var tempSaw = [];
+		}
+	}
+
+	for (var i = 0; i < saws.length; i++) {
+		var item = saws[i];
+		console.log('filtered item', item);
+
+		if (item > 2) {
+			sawsFiltered.push(item);
+			console.log('result', sawsFiltered);
+		}
+	}
+	
+	for (var i = 0; i < sawsFiltered.length; i++) {
+		var item = sawsFiltered[i];
+		console.log('array item', item);
+
+		if (!(item < result)) {
+			result = item;
+			console.log('result', result);
+		}
+	}
+
+	
+	document.getElementById('After').innerHTML = result;
+</script>
+</html>

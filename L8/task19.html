@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 19</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task18.html">Prew</a>
+	<a href="task20.html">Next</a>
+	<h1> Task 19 </h1>
+	<p>
+		Write a function that, for given two arrays X of n elements and Y of k elements determines whether there are identical consecutive elements.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<div id="Bfr"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+
+	var numbers = genArr(10, 1, 10), nmbrs = genArr(10, 1, 10), result = 'Arrays do not contain identical consecutive elements';
+	//var numbers = [0,0,0,0,1,2,0,0,0,0], nmbrs = [3,3,3,3,3,3,3,3,1,3,3], result = 'Arrays do not contain identical consecutive elements';
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	document.getElementById('Bfr' ).innerHTML = nmbrs.join(', ');
+	//Task
+	for (var i = 0; i < numbers.length; i++) {
+		var itemA = numbers[i];
+		var itemB = numbers[i+1]
+		var dupIndexA = nmbrs.indexOf(itemA, i);
+		var dupIndexB = nmbrs.indexOf(itemB, i + 1);
+
+		if (dupIndexA !== (-1)&& dupIndexB !==(-1)) {
+			result = 'Arrays contain identical consecutive elements'
+		}
+	}
+
+
+	document.getElementById('After').innerHTML = result;
+</script>
+</html>

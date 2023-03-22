@@ -26,15 +26,15 @@
 	//task
 
 	var total = 0;
-
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-		console.log('array item', item);
-
-		total += item;
-		console.log('array total', total);
+	function arrSum(){
+		for (var index = 0; index < numbers.length; index++) {
+			var item = numbers[index];
+			console.log('array item', item);
+			total += item;
+			console.log('array total', total);
+		}
 	}
-
+	arrSum();
 	document.getElementById('After').innerHTML = total / numbers.length;
 
 </script>
