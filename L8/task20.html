@@ -21,19 +21,34 @@
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-
+	
+	
 	var numbers = genArr(10, 1, 10);
 	// var numbers = [1,9,2,6,4,5,3,7,10,8];
 	document.getElementById('Before').innerHTML = numbers.join(', ');
+	 
 	//Task
-	
-
-	function compareNumbers(b, a) {
-  return a - b;
+	function unbelievablePowerFunction(name, length = 10, method = 1) {
+		name.length = length;
+		function sortNumbers(a, b) {
+  		if (method == 0) {
+  			return a - b;
+  		} 
+  		if (method == 1) {
+  			return b - a;
+  		}
+		}
+		name.sort(sortNumbers);
+		return name;
 	}
 
-	numbers.sort(compareNumbers);
-	console.log('sorted array', numbers);
+	unbelievablePowerFunction(numbers, 10);
+	console.log('arr', numbers);
+	
+	// 
+
+	// numbers.sort(compareNumbers);
+	// console.log('sorted array', numbers);
 	
 
 

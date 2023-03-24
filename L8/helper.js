@@ -11,3 +11,5 @@ function genArr (length = 10, min, max) {
 	} 
 	return result;
 }
+
+

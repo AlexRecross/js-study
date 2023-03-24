@@ -21,65 +21,54 @@
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-	var numbers = genArr(20, 1, 10), tempSaw = [], saws =[], sawsFiltered = [], result = [];
+	var numbers = genArr(20, 1, 10), result;
 	// var numbers = [4,5,4,5,5,4,6,7,4,1,2,5,4,6], tempSaw = [], saws =[], sawsFiltered = [], result; 
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	//Task
-	
-	for (var i = 1; i < numbers.length; i++) {
-		var a1 = numbers[i-1], a2 = numbers[i], a3 = numbers[i+1];
-		console.log('a1', a1);
-		console.log('a2', a2);
-		console.log('a3', a3);
-		console.log('XYU', i);
+	function sawsLengthDetector(array) {
+		var tempSaw = [], saws =[], sawsFiltered = [];
 
-		// if (a1 < a2 && a2 >a3 || a1 > a2 && a2 < a3) {
-		// 	tempSaw.push(a1);
-		// 	console.log('temp', tempSaw);
-		// } else {
-		// 		tempSaw.push(a1);
-		// 		tempSaw.push(a2);
-		// } else if (tempSaw.length < 2) {
-		// 		saws.push(tempSaw.length);
-		// 		console.log('saws', saws);
-		// 		var tempSaw = [];
-		// } else {
-		// 		var tempSaw = [];
-		// }
-	
-		if (a1 < a2 && a2 >a3 || a1 > a2 && a2 < a3) {
-			tempSaw.push(a1);
-			console.log('temp', tempSaw);
-		} else {
-			tempSaw.push(a1);
-			tempSaw.push(a2);
-			saws.push(tempSaw.length);
-			console.log('saws', saws);
-			var tempSaw = [];
+		for (var i = 1; i < array.length; i++) {
+			var a1 = array[i-1], a2 = array[i], a3 = array[i+1];
+			console.log('a1', a1);
+			console.log('a2', a2);
+			console.log('a3', a3);
+			console.log('XYU', i);
+
+		
+			if (a1 < a2 && a2 >a3 || a1 > a2 && a2 < a3) {
+				tempSaw.push(a1);
+				console.log('temp', tempSaw);
+			} else {
+				tempSaw.push(a1);
+				tempSaw.push(a2);
+				saws.push(tempSaw.length);
+				console.log('saws', saws);
+				var tempSaw = [];
+			}
 		}
-	}
 
-	for (var i = 0; i < saws.length; i++) {
-		var item = saws[i];
-		console.log('filtered item', item);
+		for (var i = 0; i < saws.length; i++) {
+			var item = saws[i];
+			console.log('filtered item', item);
 
-		if (item > 2) {
-			sawsFiltered.push(item);
-			console.log('result', sawsFiltered);
+			if (item > 2) {
+				sawsFiltered.push(item);
+			}
 		}
-	}
 	
-	for (var i = 0; i < sawsFiltered.length; i++) {
-		var item = sawsFiltered[i];
-		console.log('array item', item);
+		for (var i = 0; i < sawsFiltered.length; i++) {
+			var item = sawsFiltered[i];
+			console.log('array item', item);
 
-		if (!(item < result)) {
-			result = item;
-			console.log('result', result);
+			if (!(item < result)) {
+				result = item;
+				console.log('result', result);
+			}
 		}
+		return result
 	}
-
-	
+	sawsLengthDetector(numbers);
 	document.getElementById('After').innerHTML = result;
 </script>
 </html>

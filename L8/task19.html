@@ -28,17 +28,21 @@
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	document.getElementById('Bfr' ).innerHTML = nmbrs.join(', ');
 	//Task
-	for (var i = 0; i < numbers.length; i++) {
-		var itemA = numbers[i];
-		var itemB = numbers[i+1]
-		var dupIndexA = nmbrs.indexOf(itemA, i);
-		var dupIndexB = nmbrs.indexOf(itemB, i + 1);
+	function identConsecEl (arrayA, arrayB) {
+		for (var i = 0; i < arrayA.length; i++) {
+			var itemA = arrayA[i];
+			var itemB = arrayA[i+1]
+			var dupIndexA = arrayB.indexOf(itemA, i);
+			var dupIndexB = arrayB.indexOf(itemB, i + 1);
 
-		if (dupIndexA !== (-1)&& dupIndexB !==(-1)) {
-			result = 'Arrays contain identical consecutive elements'
+			if (dupIndexA !== (-1)&& dupIndexB !==(-1)) {
+				result = 'Arrays contain identical consecutive elements'
+			}
 		}
+		return result;
 	}
 
+identConsecEl(numbers, nmbrs);
 
 	document.getElementById('After').innerHTML = result;
 </script>

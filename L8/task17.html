@@ -24,17 +24,18 @@
 	var numbers = genArr(10, 1, 20), result = [];
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	//Task
-	
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-		var dupIndex = numbers.indexOf(item, index +1);
+	function distinctPusher(array) {
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
+			var dupIndex = array.indexOf(item, index +1);
 
-		if ( dupIndex == -1) {
-			result.push(item);
-			console.log('result', result);
+			if ( dupIndex == -1) {
+				result.push(item);
+				console.log('result', result);
+			}
 		}
 	}
-
+	distinctPusher(numbers);
 	document.getElementById('After').innerHTML = result.length;
 </script>
 </html>

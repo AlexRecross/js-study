@@ -25,9 +25,9 @@
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 
 // task 
-	function smallestOddNumber() {
-		for (var index = 0; index < numbers.length; index++) {
-			var item = numbers[index];
+	function smallestOddNumber(array) {
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
 			console.log('array item', item);
 
 			if (item%2 == 1) {
@@ -41,7 +41,7 @@
 		}
 	}
 	
-	smallestOddNumber()
+	smallestOddNumber(numbers);
 	console.log('numbers \n\t', numbers);
 
 	document.getElementById('After').innerHTML = res;

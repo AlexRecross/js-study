@@ -24,9 +24,9 @@
 	var numbers = genArr(10, 1, 10), result, maxEl;
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	//Task
-	function maxItem()	{
-		for (var index = 0; index < numbers.length; index++) {
-			var item = numbers[index];
+	function maxItem(array)	{
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
 			console.log('array item', item);
 
 			if (!(item < maxEl))  {
@@ -34,18 +34,24 @@
 				console.log('maximum element', maxEl)
 			}
 		}
+		return maxEl;
 	}
-	maxItem();
-	function idexFound ()	{
-		for (var index = numbers.length; index >= 0; index--) {
-			var item = numbers[index];
+
+
+	function idexFound (array, maxElement)	{
+		for (var index = array.length; index >= 0; index--) {
+			var item = array[index];
 			console.log('invert', item);
-			if (item == maxEl) {
+
+			if (item == maxElement) {
 				result = index;
 			}
 		}
+		return result;
 	}
-	idexFound();
+	maxItem(numbers);
+	idexFound(numbers, maxEl);
+
 	document.getElementById('After').innerHTML = result;
 </script>
 </html>

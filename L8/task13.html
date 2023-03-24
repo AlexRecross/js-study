@@ -21,18 +21,20 @@
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
-	var numbers = genArr(10, 1, 50);
+	var numbers = genArr(10, 1, 50), result = 'All elements of an array are distinct.';
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 	//Task
-	var result = 'All elements of an array are distinct.';
-	for (var index = 0; index < numbers.length; index++) {
-		var item = numbers[index];
-		var dupIndex = numbers.indexOf(item, index + 1);
-		if ( dupIndex !== (-1)) {
-			result = 'Not all elements of an array are distinct.';
+	function distinctFounder(array) {	
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
+			var dupIndex = array.indexOf(item, index + 1);
+			if ( dupIndex !== (-1)) {
+				result = 'Not all elements of an array are distinct.';
+			}
 		}
+		return result;
 	}
-
+	distinctFounder(numbers);
 	document.getElementById('After').innerHTML = result;
 </script>
 </html>
