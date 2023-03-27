@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 22</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task21.html">Prew</a>
+	<a href="task23.html">Next</a>
+	<h1> Task 22 </h1>
+	<p>
+		Given an array of 20 integers with values from 1 to 20. Necessary:<br>
+			○ write a function that scatters array elements randomly manner;<br>
+			○ create a random number from the same range and find the position of that a random number in an array;<br>
+			○ sort the elements of the array to the left of the found descending positions, and the array elements to the right of found position in ascending order.
+	</p>
+
+	<h2> Before </h2>
+	<div> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20] </div>
+	<div id="Before"></div>
+	<div id="Item"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+
+	var item = genArr(1, 1, 20), anchor,
+		nmbrs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
+	
+	
+	document.getElementById('Item').innerHTML = item.join(', ');
+	//Task
+	
+	function shuffle(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  	}
+	}
+	
+	function elementIndexFounder(array, element) {
+		for (var i = 0; i < array.length; i++) {
+			var item = array[i];
+
+			if (item == element) {
+				anchor = i;
+			}
+		}
+		return anchor;
+	}
+
+
+	shuffle(nmbrs); 
+	document.getElementById('Before').innerHTML = nmbrs.join(', ');
+
+	elementIndexFounder(nmbrs, item);
+	console.log(anchor);
+	// document.getElementById('After').innerHTML = result;
+</script>
+</html>
