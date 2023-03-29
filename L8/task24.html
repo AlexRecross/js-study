@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 24</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task23.html">Prew</a>
+	<h1> Task 24 </h1>
+	<p>
+		Given a square matrix of order n (n rows, n columns). Find the largest of the values of the elements located in the dark blue parts of the matrices.
+			<img src="./image1.png">
+	</p>
+
+	<h2> Matrix "A"</h2>
+	<div id="BeforA"></div>
+	<h2> Result "A"</h2>
+	<div id="AfterA"></div>
+	<h2> Matrix "B"</h2>
+	<div id="BeforB"></div>
+	<h2> Result "B"</h2>
+	<div id="AfterB"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	// Matrix "A"
+
+	var inputArrA = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultA = 0;
+
+	document.getElementById('BeforA').innerHTML = inputArrA.join('<br/> ');
+
+	for (var i = 0; i < inputArrA.length; i++) {
+		var subArr = inputArrA[i];
+		// console.log('subArray', subArr);
+		
+
+		for (var j = i; j < subArr.length; j++) {
+			var item = subArr[j];
+			// console.log('arrItem', item);
+
+			if (!(item < resultA))  {
+				resultA = item;
+				// console.log('maximum element', resultA)
+			}
+		}
+	}
+	
+	document.getElementById('AfterA').innerHTML = resultA;
+
+	// Matrix "B"
+
+	var inputArrB = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultB = 0, toB = 0 ;
+
+	document.getElementById('BeforB').innerHTML = inputArrB.join('<br/> ');
+
+	for (var i= 0; i < inputArrB.length; i++) {
+		var subArr = inputArrB[i];
+		console.log('subArray', subArr);
+
+		for (var j = 0; j <= i; j++) {
+			var item = subArr[j];
+			console.log('arrItem', item);
+
+			if (!(item < resultB))  {
+				resultB = item;
+				console.log('maximum element', resultB)
+			}
+		}
+	}
+	
+	document.getElementById('AfterB').innerHTML = resultB;
+
+</script>
+</html>

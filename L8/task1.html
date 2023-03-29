@@ -20,7 +20,7 @@
 <script src="helper.js"></script>
 <script type="text/javascript">
 
-	var numbers = genArr(), resRev = [];
+	var numbers = genArr(), result = [];
 	document.getElementById('Before').innerHTML = numbers.join(', ');
 
 	//Task
@@ -30,11 +30,11 @@
 	function TEST () {
 		for (var index = 0; index < numbers.length; index++) {
 			var item = numbers[index];
-			resRev.unshift(item);
-			console.log('numbers \n\t', resRev);
+			result.unshift(item);
+			console.log('numbers \n\t', result);
 		}
 	}	
 	
-	document.getElementById('After').innerHTML = resRev.join(', ');
+	document.getElementById('After').innerHTML = result.join(', ');
 </script>
 </html>

@@ -27,7 +27,7 @@
 <script src="helper.js"></script>
 <script type="text/javascript">
 
-	var item = genArr(1, 1, 20), anchor,
+	var item = genArr(1, 1, 20), anchor, result = [], arrA = [], arrB = [],
 		nmbrs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
 	
 	
@@ -52,12 +52,34 @@
 		return anchor;
 	}
 
+	function sortArrA(a, b) {
+	return a - b;
+	}
+
+	function sortArrB(a, b) {
+	return b - a;
+	}
 
 	shuffle(nmbrs); 
 	document.getElementById('Before').innerHTML = nmbrs.join(', ');
 
 	elementIndexFounder(nmbrs, item);
 	console.log(anchor);
-	// document.getElementById('After').innerHTML = result;
+
+	arrA = nmbrs.slice(0, anchor);
+	arrB = nmbrs.slice(anchor+1);
+	
+	console.log('A', arrA);
+	console.log('B', arrB);
+	
+	arrA.sort(sortArrB);
+	arrB.sort(sortArrA);
+
+	console.log('A', arrA);
+	console.log('B', arrB);
+
+	result = arrA.concat(item,arrB);
+
+	document.getElementById('After').innerHTML = result;
 </script>
 </html>
