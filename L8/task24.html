@@ -22,6 +22,38 @@
 	<div id="BeforB"></div>
 	<h2> Result "B"</h2>
 	<div id="AfterB"></div>
+	<h2> Matrix "C"</h2>
+	<div id="BeforC"></div>
+	<h2> Result "C"</h2>
+	<div id="AfterC"></div>
+	<h2> Matrix "D"</h2>
+	<div id="BeforD"></div>
+	<h2> Result "D"</h2>
+	<div id="AfterD"></div>
+	<h2> Matrix "E"</h2>
+	<div id="BeforE"></div>
+	<h2> Result "E"</h2>
+	<div id="AfterE"></div>
+	<h2> Matrix "F"</h2>
+	<div id="BeforF"></div>
+	<h2> Result "F"</h2>
+	<div id="AfterF"></div>
+	<h2> Matrix "G"</h2>
+	<div id="BeforG"></div>
+	<h2> Result "G"</h2>
+	<div id="AfterG"></div>
+	<h2> Matrix "H"</h2>
+	<div id="BeforH"></div>
+	<h2> Result "H"</h2>
+	<div id="AfterH"></div>
+	<h2> Matrix "i"</h2>
+	<div id="Befori"></div>
+	<h2> Result "i"</h2>
+	<div id="Afteri"></div>
+	<h2> Matrix "J"</h2>
+	<div id="BeforJ"></div>
+	<h2> Result "J"</h2>
+	<div id="AfterJ"></div>
 </body>
 <script src="helper.js"></script>
 <script type="text/javascript">
@@ -65,26 +97,325 @@
     genArr(5, 0, 100), 
     genArr(5, 0, 100)
   ];
-  var resultB = 0, toB = 0 ;
+  var resultB = 0;
 
 	document.getElementById('BeforB').innerHTML = inputArrB.join('<br/> ');
 
 	for (var i= 0; i < inputArrB.length; i++) {
 		var subArr = inputArrB[i];
-		console.log('subArray', subArr);
+		// console.log('subArray', subArr);
 
 		for (var j = 0; j <= i; j++) {
 			var item = subArr[j];
-			console.log('arrItem', item);
+			// console.log('arrItem', item);
 
 			if (!(item < resultB))  {
 				resultB = item;
-				console.log('maximum element', resultB)
+				// console.log('maximum element', resultB)
+			}
+		}
+	}
+
+	document.getElementById('AfterB').innerHTML = resultB;
+
+	// Matrix "C"
+
+	var inputArrC = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultC = 0;
+
+	document.getElementById('BeforC').innerHTML = inputArrC.join('<br/> ');
+
+	for (var i = 0; i < inputArrC.length; i++) {
+		var subArr = inputArrC[i];
+		// console.log('subArray', subArr);
+
+		for (var j = i; j < subArr.length - i; j++) {
+			var item = subArr[j];
+			// console.log('arrItem', item);
+
+			if(!(item < resultC))  {
+				resultC = item;
+				// console.log('maximum element', resultC)
+			}
+		}
+	}
+
+	document.getElementById('AfterC').innerHTML = resultC;
+
+	// Matrix "D"
+
+	var inputArrD = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultD = 0, crutch = -1;
+
+	document.getElementById('BeforD').innerHTML = inputArrD.join('<br/> ');
+
+	for (var i = inputArrD.length - 1; i >= 0; i--) {
+		var subArr = inputArrD[i];
+		// console.log('subArray', i, subArr);
+		crutch ++;
+
+		for (var j = crutch ; j < subArr.length - crutch; j++) {
+			var item = subArr[j];
+			// console.log('arrItem', item);
+
+			if(!(item < resultD))  {
+				resultD = item;
+				// console.log('maximum element', resultC)
 			}
 		}
 	}
 	
-	document.getElementById('AfterB').innerHTML = resultB;
+	document.getElementById('AfterD').innerHTML = resultD;
+
+	// Matrix "E"
+
+	var inputArrE = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultE = 0, crutch = -1;
+
+	document.getElementById('BeforE').innerHTML = inputArrE.join('<br/> ');
+
+for (var i = 0; i < inputArrE.length; i++) {
+		var subArr = inputArrE[i];
+		// console.log('subArray', subArr);
+
+		for (var j = i; j < subArr.length - i; j++) {
+			var item = subArr[j];
+			// console.log('arrItem', item);
+
+			if(!(item < resultE))  {
+				resultE = item;
+				// console.log('maximum element', resultE)
+			}
+		}
+	}
+
+	for (var i = inputArrE.length - 1; i >= 0; i--) {
+		var subArr = inputArrE[i];
+		// console.log('subArray', i, subArr);
+		crutch ++;
+
+		for (var j = crutch ; j < subArr.length - crutch; j++) {
+			var item = subArr[j];
+			// console.log('arrItem', item);
+
+			if(!(item < resultE))  {
+				resultE = item;
+				// console.log('maximum element', resultE)
+			}
+		}
+	}
+	
+	document.getElementById('AfterE').innerHTML = resultE;
+
+	// Matrix "F"
+
+	var inputArrF = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultF = 0;
+
+	document.getElementById('BeforF').innerHTML = inputArrF.join('<br/> ');
+
+	for (var i = 0; i < inputArrF.length; i++) {
+		var subArr = inputArrF[i];
+		// console.log('subArray', i, subArr);
+		
+		for (var j = 0; j <subArr.length; j++) {
+			var itemA = subArr[j];
+			// console.log('arrItJ', j, itemA);
+
+			if (j <= i  && j < subArr.length - i) {
+				var item = itemA;
+				// console.log('arrItem', item);
+
+				if (item > resultF) {
+					resultF = item;
+					// console.log('maximum element', resultF);
+				}
+			}
+		}
+	}
+
+	for (var i = 0; i < inputArrF.length; i++) {
+		var subArr = inputArrF[i];
+		// console.log('subArray', i, subArr);
+		subArr.reverse();
+
+		for (var j = 0; j <subArr.length; j++) {
+			var itemA = subArr[j];
+			// console.log('arrItJ', j, itemA);
+
+			if (j <= i  && j < subArr.length - i) {
+				var item = itemA;
+				// console.log('arrItem', item);
+
+				if (item > resultF) {
+					resultF = item;
+					// console.log('maximum element', resultF);
+				}
+			}
+		}
+	}
+	
+	document.getElementById('AfterF').innerHTML = resultF;
+
+	// Mtrix "G"
+
+	var inputArrG = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultG = 0;
+
+	document.getElementById('BeforG').innerHTML = inputArrG.join('<br/> ');
+
+	for (var i = 0; i < inputArrG.length; i++) {
+		var subArr = inputArrG[i];
+		// console.log('subArray', i, subArr);
+		
+
+		for (var j = 0; j <subArr.length; j++) {
+			var itemA = subArr[j];
+			// console.log('arrItJ', j, itemA);
+
+			if (j <= i  && j < subArr.length - i) {
+				var item = itemA;
+				// console.log('arrItem', item);
+
+				if (item > resultG) {
+					resultG = item;
+					// console.log('maximum element', resultG);
+				}
+			}
+		}
+	}
+	
+	document.getElementById('AfterG').innerHTML = resultG;
+
+	// Matrix "H"
+
+	var inputArrH = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultH = 0;
+
+	document.getElementById('BeforH').innerHTML = inputArrH.join('<br/> ');
+
+	inputArrH.reverse();
+
+	for (var i = 0; i < inputArrH.length; i++) {
+		var subArr = inputArrH[i];
+		// console.log('subArray', i, subArr);
+		subArr.reverse();
+
+		for (var j = 0; j <subArr.length; j++) {
+			var itemA = subArr[j];
+			// console.log('arrItJ', j, itemA);
+
+			if (j <= i  && j < subArr.length - i) {
+				var item = itemA;
+				// console.log('arrItem', item);
+
+				if (item > resultH) {
+					resultH = item;
+					// console.log('maximum element', resultH);
+				}
+			}
+		}
+	}
+	document.getElementById('AfterH').innerHTML = resultH;
+
+	// Matrix "i"
+
+	var inputArrI = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultI = 0;
+
+	document.getElementById('Befori').innerHTML = inputArrI.join('<br/> ');
+
+  for (var i = inputArrI.length - 1; i >= 0; i--) {
+    var subArr = inputArrI[i];
+    // console.log('subArray', i, subArr);
+
+    for (var j = 0; j < subArr.length - i; j++) {
+      var item = subArr[j];
+      // console.log('arrItem', item);
+
+      if (item > resultI) {
+					resultI = item;
+					// console.log('maximum element', resultI);
+			}
+    }
+  }
+	
+	document.getElementById('Afteri').innerHTML = resultI;
+
+ // Matrix "J"
+
+	var inputArrJ = [
+    genArr(5, 0, 100),
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100), 
+    genArr(5, 0, 100)
+  ];
+  var resultJ = 0;
+
+	document.getElementById('BeforJ').innerHTML = inputArrJ.join('<br/> ');
+
+inputArrJ.reverse();
+
+for (var i = 0; i < inputArrJ.length; i++) {
+		var subArr = inputArrJ[i];
+		// console.log('subArray', subArr);
+		
+
+		for (var j = i; j < subArr.length; j++) {
+			var item = subArr[j];
+			// console.log('arrItem', item);
+
+			if (!(item < resultJ))  {
+				resultJ = item;
+				// console.log('maximum element', resultJ)
+			}
+		}
+	}
+	
+	document.getElementById('AfterJ').innerHTML = resultJ;
 
 </script>
 </html>
