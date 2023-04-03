@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 14</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task13.html">Prew</a>
+	<a href="task15.html">Next</a>
+	<h1> Task 14 </h1>
+	<p>
+		Write a script that determines the maximum length of a non-decreasing subsequence.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var numbers = [1,2,3,4,5,1,2,3,4,1,2,1]//genArr(10, 1, 10), progression = [], result;
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	//Task
+var progression = [], tempProg = [], result;
+
+	for (var i = 0; i < numbers.length; i++) {
+	var compare = numbers[i], comp = numbers[i+1];
+	console.log('шо', compare);
+	console.log('c чем', comp);
+
+		if (compare < comp) {
+			tempProg.push(compare);
+			console.log('подряд темп', tempProg);
+
+		} else {
+				tempProg.push(comp);
+				progression.push(tempProg.length);
+				var tempProg = [];
+				console.log('Prog', progression);
+		}
+	}
+
+	for (var i = 0; i < progression.length; i++) {
+		var item = progression[i];
+		console.log('array item', item);
+
+		if (!(item < result)) {
+			result = item;
+			console.log('result', result);
+		}
+	}
+		
+	document.getElementById('After').innerHTML = result;
+</script>
+</html>

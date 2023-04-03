@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 1</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task2.html">Next</a>
+	<h1> Task 1 </h1>
+	<p> Write a function that returns the contents of the array in reverse. </p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+
+	var numbers = genArr(), result = [];
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+
+	//Task
+		//numbers.reverse(); or
+	TEST();
+
+	function TEST () {
+		for (var index = 0; index < numbers.length; index++) {
+			var item = numbers[index];
+			result.unshift(item);
+			console.log('numbers \n\t', result);
+		}
+	}	
+	
+	document.getElementById('After').innerHTML = result.join(', ');
+</script>
+</html>

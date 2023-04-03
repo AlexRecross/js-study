@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 21</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task20.html">Prew</a>
+	<a href="task22.html">Next</a>
+	<h1> Task 21 </h1>
+	<p>
+		Given an array of random numbers in the range from 20 to +20. Need to find positions extreme negative elements (the leftmost negative element and the most right negative element) and sort the elements between them.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+
+	var numbers = genArr(20, -20, 20);
+	// var numbers = [15, 13, -18, -18, -17, 13, -13, 18, -4, 19, 7, 19, 19, -10, 10, 10, -10, 13, 8, 15];
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	//Task
+	var from, to, arrA = [], arrB = [], arrC =[], result = [];
+
+	for (var i = 0; i < numbers.length; i++) {
+		var item = numbers[i];
+		console.log('Array item', item);
+
+		if (item < 0) {
+			to = i;
+			// from = from || i;
+			// from = typeof from !== 'undefined' ? from : i;
+			console.log('To', to);
+			console.log('From', from);
+		}
+
+		if (item < 0 && typeof from === 'undefined') {
+			from = i;
+			console.log('From', from);
+		}
+	}
+	// 																										First one
+
+	// for (var i = 0; i < from; i++) {
+	// 	var item = numbers[i];
+	// 	arrA.push(item);
+	// }
+
+	// for (var i = from; i < to+1; i++) {
+	// 	var item = numbers[i];
+	// 	arrB.push(item);
+	// }
+
+	// for (var i = to+1; i < numbers.length; i++) {
+	// 	var item = numbers[i];
+	// 	arrC.push(item);
+	// }
+
+	// console.log('A', arrA);
+	// console.log('B', arrB);
+	// console.log('C', arrC);
+
+	// function compareNumbers(a, b) {
+	// return a - b;
+	// }
+
+	// arrB.sort(compareNumbers);
+	// console.log('B', arrB);
+
+	// result =  [...arrA, ...arrB, ...arrC];
+	// console.log('result', result);
+
+
+	// 																										Another one
+
+	// arrA = numbers.slice(0,from+1);
+	// arrB = numbers.slice(from, to);
+	// arrC = numbers.slice(to);
+
+	// console.log('A', arrA);
+	// console.log('B', arrB);
+	// console.log('C', arrC);
+
+	// function compareNumbers(a, b) {
+	// return a - b;
+	// }
+	// arrB.sort(compareNumbers);
+	// console.log('B', arrB);
+
+	// result = arrA.concat(arrB,arrC);
+
+	// 																										One more
+	var segment = to - from;
+	arrA = numbers;
+	console.log('A', arrA);
+	console.log('segment', segment);
+
+	arrB = arrA.splice(from + 1,segment - 1);
+	console.log('B', arrB);
+	console.log('A', arrA);
+
+	
+
+	function compareNumbers(a, b) {
+	  return a - b;
+	}
+	arrB.sort(compareNumbers);
+	console.log('B', arrB);
+
+	result = numbers.splice(from + 1,  0, ...arrB);
+	console.log('result', result);
+
+	var toSort = numbers.slice(from, to);
+	toSort.sort(compareNumbers);
+	numbers.splice(from, to, ...toSort);
+
+
+	document.getElementById('After').innerHTML = numbers;
+</script>
+</html>

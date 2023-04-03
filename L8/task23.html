@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 23</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task22.html">Prew</a>
+	<a href="task24.html">Next</a>
+	<h1> Task 23 </h1>
+	<p>
+		A two-dimensional array of 3X4 dimensions is given. We need to find the quantity elements whose value is zero.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var result = 0;
+	var inputArr = [
+    genArr(6, 0, 3),
+    genArr(6, 0, 3), 
+    genArr(6, 0, 3), 
+    genArr(6, 0, 3), 
+    genArr(6, 0, 3), 
+    genArr(6, 0, 3)
+  ];
+	document.getElementById('Before').innerHTML = inputArr.join('<br/> ');
+
+	for (var i = 0; i < inputArr.length; i++) {
+		var subArray = inputArr[i];
+		console.log('subArray', subArray);
+
+		for (var j = 0; j < subArray.length; j++) {
+			var item = subArray[j];
+			console.log('arr2 sort', item);
+
+			if (item == 0) {
+				result ++;
+			}
+		}
+	}
+
+	document.getElementById('After').innerHTML = result;
+	
+</script>
+</html>

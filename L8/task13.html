@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 13</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task12.html">Prew</a>
+	<a href="task14.html">Next</a>
+	<h1> Task 13 </h1>
+	<p>
+		Write a function that determines whether all elements of an array are distinct.
+	</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var numbers = genArr(10, 1, 50), result = 'All elements of an array are distinct.';
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+	//Task
+	function distinctFounder(array) {	
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
+			var dupIndex = array.indexOf(item, index + 1);
+			if ( dupIndex !== (-1)) {
+				result = 'Not all elements of an array are distinct.';
+			}
+		}
+		return result;
+	}
+	distinctFounder(numbers);
+	document.getElementById('After').innerHTML = result;
+</script>
+</html>

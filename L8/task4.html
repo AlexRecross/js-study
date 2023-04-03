@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 4</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task3.html">Prew</a>
+	<a href="task5.html">Next</a>
+	<h1> Task 4 </h1>
+	<p> Write a function to find the arithmetic mean of an array.</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	var numbers = genArr();
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+
+	//task
+
+	var total = 0;
+	function arrSum(array){
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
+			console.log('array item', item);
+			total += item;
+			console.log('array total', total);
+		}
+	}
+	arrSum(numbers);
+	document.getElementById('After').innerHTML = total / numbers.length;
+
+</script>
+</html>

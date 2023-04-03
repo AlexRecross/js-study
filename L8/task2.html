@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task 2</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task1.html">Prew</a>
+	<a href="task3.html">Next</a>
+	<h1> Task 2 </h1>
+	<p> Write a function that finds values in an array that repeat two or more times and returns them.</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+
+	var numbers = genArr(50);
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+
+	// Task own implementation
+	// function isElementHasDuplication (arr, item, index) {
+	// 	for (; index < arr.length; index++) {
+	// 		var el = arr[index];
+
+	// 		if (item == el) {
+	// 			return true;
+	// 		}
+	// 	}
+	// }
+
+	// for (var index = 0; index < numbers.length; index++) {
+	// 	var item = numbers[index];
+	// 	console.log('array item', item);	
+
+	// 	if (isElementHasDuplication(numbers, item, index + 1)) {
+	// 		resDupl.push(item);
+	// 		console.log('duplicate found', item);	
+	// 	}
+	// }
+
+	// Task implementation using indexOf 
+
+	var resDupl = [];
+	
+	for (var index = 0; index < numbers.length; index++) {
+		var item = numbers[index];
+		var dupIndex = numbers.indexOf(item, index + 1);
+		if ( dupIndex !== (-1)) {
+			resDupl.push(item);
+		}
+	}
+
+	console.log('duplicates \n\t', resDupl);
+
+	document.getElementById('After').innerHTML = resDupl.join();
+</script>
+</html>

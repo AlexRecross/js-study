@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 3</title>
+</head>
+<body>
+	<a href="./index.html">Home</a><br/>
+	<a href="task2.html">Prew</a>
+	<a href="task4.html">Next</a>
+	<h1> Task 3 </h1>
+	<p> Write a function that finds the smallest odd number in the array and returns it.</p>
+
+	<h2> Before </h2>
+	<div id="Before"></div>
+	<h2> After </h2>
+	<div id="After"></div>
+
+</body>
+<script src="helper.js"></script>
+<script type="text/javascript">
+	
+	var numbers = genArr(), res;
+	document.getElementById('Before').innerHTML = numbers.join(', ');
+
+// task 
+	function smallestOddNumber(array) {
+		for (var index = 0; index < array.length; index++) {
+			var item = array[index];
+			console.log('array item', item);
+
+			if (item%2 == 1) {
+				console.log('odd', item, 'res', res);
+
+				if (!(item > res)) {
+					res = item;
+					console.log('reassign "res"', res);
+				}
+			}
+		}
+	}
+	
+	smallestOddNumber(numbers);
+	console.log('numbers \n\t', numbers);
+
+	document.getElementById('After').innerHTML = res;
+</script>
+</html>
