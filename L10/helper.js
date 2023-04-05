@@ -22,13 +22,18 @@ function Hobbit () {
 	this.N = ++num;
 }
 
-function generatorHobbit () {
-	var a = new Hobbit;
-	hobbitArr.push(a);
-}
+
 
 function genHobitonia (X = 24) {
+	var hobbitArr = [];
+
+	function generatorHobbit () {
+		var a = new Hobbit;
+		hobbitArr.push(a);
+	}
+
 	for (var i = 0; i < X; i++){
 		generatorHobbit();
 	}
+	return hobbitArr
 }
