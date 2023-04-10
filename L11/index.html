@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>L11</title>
+</head>
+<body>
+	<h2>L11</h2>
+	<ol>
+		<li>Write a function that returns the result of raising a number to the power "n". The function takes 2 arguments. The number itself and the power to which it must be exponentiated.</li>
+		<li>Correct the function taking into account the peculiarities of mat operations in js. So that when passing a number with a dot (not a degree), the function works correctly.</li>
+		<li>Solve “1” problem using recursion.</li>
+		<li>Write 2 functions (methods can be) that will return an increment / decrement each time they are called. That is, counter functions. To check, call them in an infinite loop (meaning setTimeout)</li>
+		<li>To task “4”, add a button to the page that will display the current state of the counters.</li>
+	</ol>
+
+	<button onclick="getResult()">Show counters meters</button>
+	<div id="result"></div>
+</body>
+<script type="text/javascript">
+
+	//task 1-3
+
+	function exponentiator(number = 1, exp = 1) {
+  	console.log(number, exp);
+
+  	if (exp === 1 || typeof number !== 'number') {
+       return number;
+  	}
+  	return number * exponentiator(number, exp - 1);
+	}
+
+	var x = exponentiator(2, 3);
+	console.log(x)
+
+	// Task 4-5
+	var counterA = 0, counterB = 0, xxx;
+
+	var incrementCounter = (function () {
+    return function () {
+    	counterA += 1; 
+    	// console.log('increment', counterA);
+    	return counterA
+    }
+	})();
+
+	var decrementCounter = (function () {
+    return function () {
+    	counterB -= 1; 
+    	// console.log('decrement', counterB);
+    	return counterB
+    }
+	})();
+
+	
+	setTimeout(function runA() {
+	  incrementCounter();
+	  setTimeout(runA, 250);
+		}, 250);
+
+	setTimeout(function runB() {
+	  decrementCounter();
+	  setTimeout(runB, 330);
+		}, 330);
+
+	function getResult(){
+		xxx = 'increment:' +counterA+" "+ 'decrement:' +counterB;		
+		return xxx;
+		console.log(xxx);
+		document.getElementById("result").innerHTML = xxx;
+	}	
+	
+	
+</script>
+</html>
