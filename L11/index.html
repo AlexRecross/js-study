@@ -14,9 +14,9 @@
 		<li>Write 2 functions (methods can be) that will return an increment / decrement each time they are called. That is, counter functions. To check, call them in an infinite loop (meaning setTimeout)</li>
 		<li>To task “4”, add a button to the page that will display the current state of the counters.</li>
 	</ol>
+	<input type="button" onclick="getResult()" value="Show counters meters">
 
-	<button onclick="getResult()">Show counters meters</button>
-	<div id="result"></div>
+	<div id="current counter meters"></div>
 </body>
 <script type="text/javascript">
 
@@ -66,10 +66,13 @@
 
 	function getResult(){
 		xxx = 'increment:' +counterA+" "+ 'decrement:' +counterB;		
+		console.log(xxx)
+		document.getElementById("current counter meters").innerHTML = xxx;
+	
 		return xxx;
-		console.log(xxx);
-		document.getElementById("result").innerHTML = xxx;
 	}	
+
+	
 	
 	
 </script>
