@@ -14,104 +14,173 @@
 		<li>The “referful of the reference” of the reference and the following</li>
 	</ul>
 	<h2>Result</h2>
-	<input id="test" type="button" onclick="click0()" value="click# 0">
-	<input type="button" onclick="click1()" value="click# 1">
-	<input type="button" onclick="click2()" value="click# 2">
-	<input type="button" onclick="click3()" value="click# 3"><br/>
-	<input type="button" onclick="click4()" value="click# 4">
-	<input type="button" onclick="click5()" value="click# 5">
-	<input type="button" onclick="click6()" value="click# 6">
-	<input type="button" onclick="click7()" value="click# 7"><br/>
-	<input type="button" onclick="click8()" value="click# 8">
-	<input type="button" onclick="click9()" value="click# 9">
-	<input type="button" onclick="click10()" value="click# 10">
-	<input type="button" onclick="click11()" value="click# 11">
+	<input type="button" onclick="onClick(1)" value="click# 0">
+	<input type="button" onclick="onClick(1)" value="click# 1">
+	<input type="button" onclick="onClick(2)" value="click# 2">
+	<input type="button" onclick="onClick(3)" value="click# 3"><br/>
+	<input type="button" onclick="onClick(4)" value="click# 4">
+	<input type="button" onclick="onClick(5)" value="click# 5">
+	<input type="button" onclick="onClick(6)" value="click# 6">
+	<input type="button" onclick="onClick(7)" value="click# 7"><br/>
+	<input type="button" onclick="onClick(8)" value="click# 8">
+	<input type="button" onclick="onClick(9)" value="click# 9">
+	<input type="button" onclick="onClick(10)" value="click# 10">
+	<input type="button" onclick="onClick(11)" value="click# 11">
 	
 </body>
 <script type="text/javascript">
 
-	document.getElementById("test").addEventListener('click', function () {})
+	
 
-	var obj = {
+	var storage = {
+		['click# 0']: 0,
 		['click# 1']: 0,
+		['click# 2']: 0,
+		['click# 3']: 0,
+		['click# 4']: 0,
+		['click# 5']: 0,
+		['click# 6']: 0,
+		['click# 7']: 0,
+		['click# 8']: 0,
+		['click# 9']: 0,
+		['click# 10']: 0,
+		['click# 11']: 0,
 	};
 
-	var storage = [0,0,0,0,0,0,0,0,0,0,0,0];
 
-	function click0() {
-		console.log('click# 0');
-		storage[0] ++;
-	}
+	function onClick (arguments) {
+		console.log('click#', arguments);
 
-	function click1() {
-		console.log('click# 1');
-		storage[1] ++;
-	}
-
-	function click2() {
-		console.log('click# 2');
-		storage[2] ++;
-	}
-
-	function click3() {
-		console.log('click# 3');
-		storage[3] ++;
-	}
-
-	function click4() {
-		console.log('click# 4');
-		storage[4] ++;
-	}
-
-	function click5() {
-		console.log('click# 5');
-		storage[5] ++;
-	}
-
-	function click6() {
-		console.log('click# 6');
-		storage[6] ++;
-	}
-
-	function click7() {
-		console.log('click# 7');
-		storage[7] ++;
-	}
-
-	function click8() {
-		console.log('click# 8');
-		storage[8] ++;
-	}
-
-	function click9() {
-		console.log('click# 9');
-		storage[9] ++;
-	}
-
-	function click10() {
-		console.log('click# 10');
-		storage[10] ++;
-	}
-
-	function click11() {
-		console.log('click# 11');
-		storage[11] ++;
+		switch (arguments) {
+			case 0:
+		    storage['click# 0'] ++;
+				break;
+			case 1:
+				storage['click# 1'] ++;
+				break;
+			case 2:
+				storage['click# 2'] ++;
+				break;
+			case 3:
+				storage['click# 3'] ++;
+				break;
+			case 4:
+				storage['click# 4'] ++;
+				break;
+			case 5:
+				storage['click# 5'] ++;
+				break;
+			case 6:
+				storage['click# 6'] ++;
+				break;
+			case 7:
+				storage['click# 7'] ++;
+				break;
+			case 8:
+				storage['click# 8'] ++;
+				break;
+		  case 9:
+		    	storage['click# 9'] ++;
+		    break;
+			case 10:
+				storage['click# 10'] ++;
+				break;
+			case 11:
+				storage['click# 11'] ++;
+				break;
+		}
 	}
 
 	function logger() {
-		for (var i = 0; i<storage.length; i++) {
-			var item = storage[i];
-
-			if (item > 0) {
-				console.log('click#',i, 'has been pressed', item, 'time(s)')
+		for (let key in storage) {
+			if (storage[key] > 0){
+				console.log(key,'has been pressed', storage[key], 'time(s)');
 			}
 		}
 	}
-	
+
 	setTimeout(function runB() {
 	  logger();
 	  setTimeout(runB, 60000);
-		}, 60000);
+	}, 60000);
+	
+
+	// var storage = [0,0,0,0,0,0,0,0,0,0,0,0];
+
+	// function click0() {
+	// 	console.log('click# 0');
+	// 	storage[0] ++;
+	// }
+
+	// function click1() {
+	// 	console.log('click# 1');
+	// 	storage[1] ++;
+	// }
+
+	// function click2() {
+	// 	console.log('click# 2');
+	// 	storage[2] ++;
+	// }
+
+	// function click3() {
+	// 	console.log('click# 3');
+	// 	storage[3] ++;
+	// }
+
+	// function click4() {
+	// 	console.log('click# 4');
+	// 	storage[4] ++;
+	// }
+
+	// function click5() {
+	// 	console.log('click# 5');
+	// 	storage[5] ++;
+	// }
+
+	// function click6() {
+	// 	console.log('click# 6');
+	// 	storage[6] ++;
+	// }
+
+	// function click7() {
+	// 	console.log('click# 7');
+	// 	storage[7] ++;
+	// }
+
+	// function click8() {
+	// 	console.log('click# 8');
+	// 	storage[8] ++;
+	// }
+
+	// function click9() {
+	// 	console.log('click# 9');
+	// 	storage[9] ++;
+	// }
+
+	// function click10() {
+	// 	console.log('click# 10');
+	// 	storage[10] ++;
+	// }
+
+	// function click11() {
+	// 	console.log('click# 11');
+	// 	storage[11] ++;
+	// }
+
+	// function logger() {
+	// 	for (var i = 0; i<storage.length; i++) {
+	// 		var item = storage[i];
+
+	// 		if (item > 0) {
+	// 			console.log('click#',i, 'has been pressed', item, 'time(s)')
+	// 		}
+	// 	}
+	// }
+	
+	// setTimeout(function runB() {
+	//   logger();
+	//   setTimeout(runB, 60000);
+	// 	}, 60000);
 
 </script>
 </html>
