@@ -1,0 +1,46 @@
+body{
+	background-color: #ebebeb;
+}
+
+.semafore {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-around;
+	background-color: #3a474d;
+	border: 6px solid black;
+	border-radius: 10px;
+	width: 125px;
+	height: 335px;
+	margin-left: 45vh;
+	margin-top: 10vh;
+	box-shadow: 0px 6px 12px rgba(0,0,0,1);
+}
+
+.circle {
+	display: flex;
+	align-items: center;
+	border: 2px solid black;
+	border-radius: 50px;
+	height: 100px;
+	width: 100px;
+	box-shadow: inset 15px 20px 80px 20px rgba(73, 63, 77, 1);
+}
+
+
+.active{
+	box-shadow:  inset 10px 8px 20px 0px rgba(73, 63, 77, 1) !important;
+}
+
+.redlight{
+	background-color: #ff1615
+}
+
+.yellowlight{
+	background-color: #ffc902;
+}
+
+
+.greenlight{
+	background-color: #03f7a5;
+}

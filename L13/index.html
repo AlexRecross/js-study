@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>L13</title>
+	<link rel="stylesheet" type="text/css" href="./styles.css">
+</head>
+<body>
+	<h2>L13 task</h2>
+	<p>
+		Create html page. And implement a traffic light on it. The traffic light must have 3 lights (green, yellow and red). Light bulbs should constantly switch without any interaction from the user of the page. <br/><br/><br/> P.S. The rules for switching light bulbs should at least remotely resemble a real traffic light.
+	</p>
+	<div class="semafore">
+		<div id="first" class="circle redlight"></div>
+		<div id="second" class="circle yellowlight"></div>
+		<div id="third" class="circle greenlight"></div>
+	</div>
+	
+</body>
+<script type="text/javascript">
+
+	var first = document.getElementById("first");
+	var second = document.getElementById("second");
+	var third = document.getElementById("third");
+
+
+	function activeRed () {
+		first.className += " active";
+		second.classList.remove("active");
+		third.classList.remove("active");
+	}
+
+	function activeYellow (){
+		second.className += " active";
+		third.classList.remove("active");
+		first.classList.remove("active");
+	}
+
+	function activeGreen(){
+		third.className += " active";
+		first.classList.remove("active");
+		second.classList.remove("active");
+	}
+
+	function activator(arguments){
+		if(arguments == 'Yellow'){
+			activeYellow();
+		}
+		if(arguments == 'Red') {
+			activeRed();
+		}
+		if(arguments == 'Green'){
+			activeGreen();
+		}
+	}
+
+	var colorList = [
+		{name: 'Yellow', interval: 800},
+		{name: 'Red', interval: 4000},
+		{name: 'Yellow', interval: 800},
+		{name: 'Green', interval: 3000}
+	];
+
+	var count = 0;
+
+	function changeColor() {
+		if (count === colorList.length) {
+			count = 0;
+		}
+		var temp = colorList[count].name;
+		activator(temp);
+		
+		console.log(colorList[count].name);
+		setTimeout(changeColor, colorList[count].interval)
+		count = count + 1;
+	}
+
+	changeColor()
+</script>
+</html>
