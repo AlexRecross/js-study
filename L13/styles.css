@@ -29,11 +29,11 @@ body{
 
 
 .active{
-	box-shadow:  inset 10px 8px 20px 0px rgba(73, 63, 77, 1) !important;
+	box-shadow: inset 10px 8px 20px 0px rgba(73, 63, 77, 1) !important;
 }
 
 .redlight{
-	background-color: #ff1615
+	background-color: #ff1615;
 }
 
 .yellowlight{
