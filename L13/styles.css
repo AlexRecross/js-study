@@ -1,6 +1,11 @@
 body{
 	background-color: #ebebeb;
 }
+.semafors {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
 
 .semafore {
 	display: flex;
@@ -12,7 +17,6 @@ body{
 	border-radius: 10px;
 	width: 125px;
 	height: 335px;
-	margin-left: 45vh;
 	margin-top: 10vh;
 	box-shadow: 0px 6px 12px rgba(0,0,0,1);
 }
@@ -42,5 +46,17 @@ body{
 
 
 .greenlight{
+	background-color: #03f7a5;
+}
+
+.redcolor {
+	background-color: #ff1615;
+}
+
+.yellowcolor {
+	background-color: #ffc902;
+}
+
+.greencolor {
 	background-color: #03f7a5;
 }

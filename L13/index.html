@@ -11,18 +11,26 @@
 	<p>
 		Create html page. And implement a traffic light on it. The traffic light must have 3 lights (green, yellow and red). Light bulbs should constantly switch without any interaction from the user of the page. <br/><br/><br/> P.S. The rules for switching light bulbs should at least remotely resemble a real traffic light.
 	</p>
-	<div class="semafore">
-		<div id="first" class="circle redlight"></div>
-		<div id="second" class="circle yellowlight"></div>
-		<div id="third" class="circle greenlight"></div>
+	<div class="semafors">
+		<div class="semafore">
+			<div id="first" class="circle redlight"></div>
+			<div id="second" class="circle yellowlight"></div>
+			<div id="third" class="circle greenlight"></div>
+		</div>
+
+		<div class="semafore">
+			<div id="red" class="circle active"></div>
+			<div id="yellow" class="circle active yellow"></div>
+			<div id="green" class="circle active green"></div>
+		</div>
 	</div>
-	
 </body>
 <script type="text/javascript">
 
 	var first = document.getElementById("first");
 	var second = document.getElementById("second");
 	var third = document.getElementById("third");
+
 
 
 	function activeRed () {
@@ -76,5 +84,55 @@
 	}
 
 	changeColor()
+
+	
+// second traffic light demo
+
+	var redSecond = document.getElementById("red");
+	var yellowSecond = document.getElementById("yellow");
+	var greenSecond = document.getElementById("green");
+	
+	function trafficLight(arguments){
+		if(arguments == 'First') {
+			redSecond.style.cssText = "background-color: #ff1615;";
+			yellowSecond.style.cssText = "background-color: #6B5A3E;";
+			greenSecond.style.cssText = "background-color: #396860;";
+		}
+
+		if(arguments == 'Second'){
+			redSecond.style.cssText = "background-color: #6C3741;";
+			yellowSecond.style.cssText = "background-color: #ffc902;";
+			greenSecond.style.cssText = "background-color: #396860;";
+		}
+		
+		if(arguments == 'Third'){
+			redSecond.style.cssText = "background-color: #6C3741;";
+			yellowSecond.style.cssText = "background-color: #6B5A3E;";
+			greenSecond.style.cssText = "background-color: #03f7a5;";
+		}
+	}
+
+	var timerList = [
+		{name: 'Second', interval: 800},
+		{name: 'First', interval: 4000},
+		{name: 'Second', interval: 800},
+		{name: 'Third', interval: 3000}
+	];
+
+	var secondCount = 0;
+
+	function changerTimer() {
+		if (secondCount === timerList.length) {
+			secondCount = 0;
+		}
+		var tmp = timerList[secondCount].name;
+		trafficLight(tmp);
+		// console.log(timerList[secondCount].name);
+		setTimeout(changerTimer, timerList[secondCount].interval)
+		secondCount = secondCount + 1;
+	}
+
+	window.addEventListener("load", changerTimer());
+
 </script>
 </html>
