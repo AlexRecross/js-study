@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>All Task</title>
+</head>
+<body>
+	<a href="./index.html">Home</a>
+	<h2>All tasks</h2>
+	<h4>Task 0</h4>
+		<ol>
+			<li>Create an object "House" with properties: windows and doors, the values of which will be the color. Create methods: paint the window, paint the doors, paint everything. Methods must take color. Test object</li>
+			<li>Create object "Car". It will have the following properties: model, brand and mileage and the "Owner" object and the following methods: the drive function takes one parameter is the number of kilometers. The owner object has the following properties: first name, last name, age and methods: change the surname. Test object</li>
+		</ol>
+		<hr/>
+	<h4>Task 1</h4>
+		<p> For all subsequent tasks, <u>general</u> methods and <u>necessary</u> properties should be moved to prototype.
+			<ol>
+				<li>
+					Create a Rabbit constructor that will create objects that have the "color" property and the "change color" method. The constructor takes as a function parameter the original color of the rabbit. Create two rabbits of different colors and swap them color to gold.
+				</li><br/><br/>
+				<li>
+					Create a Pupil constructor that takes a student name and creates an object with the following properties and methods:<br/>
+					Properties:<br/>
+						<ul>
+							<li>Student's name</li>
+							<li>Score array</li>
+						</ul><br>
+					Methods:<br>
+						<ul><li>put an estimate- which takes as a function parameter an estimate and adds to ratings array</li></ul>
+				</li><br/><br/>
+				<li>
+					Create a <u>Horse</u> constructor that takes a horse name and creates an object with the following properties and methods:<br/>
+					Properties:<br/>
+						<ul>
+							<li>horse name</li>
+							<li>mileage</li>
+							<li>total mileage by all horses</li>
+						</ul>
+					Methods:<br>
+					<ul>
+						<li>a run function that takes a distance as a function parameter, and increases the mileage and total mileage by that distance.</li>
+					</ul>
+					Create two horses and test that the total mileage was equal to the sum of the mileage every horse
+				</li><br/><br/>
+				<li>
+					Modify the Horse constructor as follows: add a property fatigue. Every 1 km run adds 1 unit of fatigue. When tired reaches 10 the horse must rest 1 second. Implement this in a rest method, which takes as a function parameter, the method to be executed after rest and parameters of this method. The task of the method is to display the message “Horse is resting." Implement a delay of 1 second using the SetTimeout function. After which should reset the fatigue and execute the method that came as a parameter functions. For example: a horse must run 8 km. At the moment, fatigue is 4 units. When the horse runs 6 km, fatigue will reach 10 units. On this At this point, the horse must rest for 1 second. Fatigue will then be reset. And after rest, the horse must run the remaining 2 km.
+				</li><br/><br/>
+				<li>
+					Create a Shop constructor that will create objects that have the following properties and methods: <br/>
+					Properties:<br/>
+					<ul>
+						<li>warehouse object (key product name, quantity value)</li>
+						<li>pricing object (key product name, value price)</li>
+						<li>number of goods in stock</li>
+						<li>number of products in all created stores</li>
+					</ul>
+					Methods:<br>
+					<ul>
+						<li>get product price function that takes the name of the product and returns the price</li>
+						<li>a function to get the quantity of a certain product in stock, which takes the name of the product and returns the quantity of this product in stock</li>
+						<li>a function to buy a product that takes the name of the product and the quantity and reduces the quantity from the warehouse object as much as was specified in the parameters. Provide a check that there is no negative quantity of goods in the warehouse.</li>
+						<li>a function to add goods to the warehouse, which takes an object with all the goods to be added and adds them to the warehouse. In the absence of prices for any of the goods, this product does not need to be added.</li>
+						<li>function add rates, which accepts an object of rates to be added and those that are not present to be added, and which present replace</li>
+					</ul>
+				</li>
+			</ol>
+		</p>
+	<hr/>
+	<h4>Task 2</h4>
+		<p>
+			Create a MyArray constructor that creates an object with the following methods and properties:<br/>
+			Methods:<br>
+			<ul>
+				<li><u>push</u></li>
+				<li><u>shift</u></li>
+				<li><u>join</u></li>
+				<li><u>concat</u></li>
+				<li><u>pop</u></li>
+				<li><u>unshift</u></li>
+				<li><u>slice</u></li>
+				<li><u>reverse</u></li>
+				<li><u>sort</u></li>
+				<li><u>splice</u></li>
+			</ul>
+			Properties:<br/>
+			<ul>
+				<li><u>index</u></li>
+				<li><u>input</u></li>
+				<li><u>length</u></li>
+			</ul>
+		</p>
+		<hr/>
+	<h4>Task 4</h4>
+		<p>
+			Create an array of Students. Each student contains an average mark, a name, a major subject. The average grade is calculated at the time the student is created from the array of grades. The array of ratings is generated randomly. Display this array as a table.
+		</p>
+		<hr/>
+		<h4>Task 4</h4>
+			<p>
+				Create a database of cars in the parking lot (minimum 10) using objects, output as a table<br/>
+				<b>Example:</b><br/>
+				<img src="image1.jpg" alt="tablet a database of cars"><br/>
+				<b>Progress:</b>
+				<ol>
+					<li>Create a constructor for a car directory (make, model)</li>
+					<li>Create a constructor for a list of cars in the parking lot (number, owner, link to the guide)</li>
+					<li>Create an array of objects of entries in the directory of car types</li>
+					<li>Create an array of objects for the list of cars in the parking lot</li>
+					<li>Generate the HTML code of the table and output it to the stream using the write method.</li>
+				</ol>
+			</p>
+			<hr/>
+	<a href="./index.html">Home</a>
+</body>
+</html>

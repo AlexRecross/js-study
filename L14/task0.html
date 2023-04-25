@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 0</title>
+</head>
+<body>
+	<h4>Task 0</h4>
+		<ol>
+			<li>Create an object "House" with properties: windows and doors, the values of which will be the color. Create methods: paint the window, paint the doors, paint everything. Methods must take color. Test object</li>
+			<li>Create object "Car". It will have the following properties: model, brand and mileage and the "Owner" object and the following methods: the drive function takes one parameter is the number of kilometers. The owner object has the following properties: first name, last name, age and methods: change the surname. Test object</li>
+		</ol>
+		<hr/>
+</body>
+<script type="text/javascript">
+	// first part "House" object
+	// try realise task from different type of sintax
+
+	var House = {
+		windows: "color",
+		doors: "color",
+	};
+
+	House.paintWindows = function(arguments){
+		this.windows = arguments;
+	}
+
+	House.paintDoors = function(arguments) {
+		this.doors = arguments;
+	}
+
+	House.paintAll = function(arguments) {
+		this.windows = arguments;
+		this.doors = arguments;
+	}
+
+	// second part "Car" object
+
+	var Car = {
+		model: "Mustang" ,
+		brand: "Ford",
+		mileage: 666,
+		drive: function(arguments) {
+			this.mileage +=arguments;
+		},
+		Ovner: {
+			firstName: "Marco",
+			lastName: "Polo",
+			changeName: function(arguments){
+				this.lastName = arguments;
+			}
+		}
+	}
+</script>
+</html>
