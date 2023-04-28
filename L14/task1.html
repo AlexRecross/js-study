@@ -104,7 +104,7 @@
 
 	Horse.prototype.run = function(distance){
 		this.mileage += distance;
-		Horse.prototype.allHorseMileage +=distance;
+		Horse.prototype.allHorseMileage += distance;
 	}
 
 	var a = new Horse("Marta");
@@ -117,5 +117,56 @@
 	console.log(b);
 
 	// part 4 upgrade "Horse"
+
+	function Mustang (name) {
+		Horse.call(this, name);
+		this.fatigue = 0;
+	}
+
+	Mustang.prototype = Object.create(Horse.prototype);
+	Mustang.prototype.constructor = Mustang;
+
+	Mustang.prototype.run = function(distance) {
+		if(distance > 0){
+			if (this.fatigue < 10) {
+				// Horse.prototype.run.call(this, 1);
+				this.fatigue++;
+				console.log("Mustang", this.name, "pass the 1km");
+				this.run(distance -1);
+			} else {
+				console.log("Mustang", this.name, "is start resting");
+				var self = this;
+				setTimeout(function(){
+					console.log("Mustang", this.name, self.name, "get rested");
+					self.fatigue = 0;
+					self.run(distance);
+				}, 1000);
+
+			}
+		}
+	}
+	var sivka = new Mustang('Silver');
+	var burka = new Mustang('Gold');
+	burka.run(111);
+
+				// var afterRest = function(){
+				// 	this.fatigue = 0;
+				// 	console.log("Mustang", this.name, "is finish resting");
+				// 	this.run(distance);
+				// }
+
+				// setTimeout(afterRest(), 1000);
+
+ 
+				// var afterRest = this.run.bind(this, distance);
+				// setTimeout(afterRest,1000);
+
+
+	// 		var self = this.run;
+	// var afterRest = this.run.bind(this, distance);
+	// setTimeout(afterRest, 1000);
+
+	// setTimeout(console.log, 11 * 1000);
+
 </script>
 </html>
