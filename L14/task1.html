@@ -131,7 +131,7 @@
 			if (this.fatigue < 10) {
 				// Horse.prototype.run.call(this, 1);
 				this.fatigue++;
-				console.log("Mustang", this.name, "pass the 1km");
+				// console.log("Mustang", this.name, "pass the 1km");
 				this.run(distance -1);
 			} else {
 				console.log("Mustang", this.name, "is start resting");
@@ -147,26 +147,59 @@
 	}
 	var sivka = new Mustang('Silver');
 	var burka = new Mustang('Gold');
-	burka.run(111);
+	burka.run(11);
 
-				// var afterRest = function(){
-				// 	this.fatigue = 0;
-				// 	console.log("Mustang", this.name, "is finish resting");
-				// 	this.run(distance);
-				// }
+//  part 5 "Shop"
 
-				// setTimeout(afterRest(), 1000);
+	function Shop () {
+		this.stock = {apple: 2};
+		this.pricing = {apple: 12};
+		this.stockCapacity = 2;
+	}
+	Shop.prototype.allShopStock = 0;
 
- 
-				// var afterRest = this.run.bind(this, distance);
-				// setTimeout(afterRest,1000);
+	Shop.prototype.howMuch = function(product) {
+		var productName = product;
+		var productPrice = this.pricing[product];
+		console.log("Price on", productName, "is", productPrice);
+	}
+
+	Shop.prototype.stockAdder = function(nameProduct, quantity) {
+		var productName = nameProduct;
+		var add = quantity;
+		console.log(add, productName, "was added in stock");
+		this.stockCapacity += quantity;
+		this.stock[nameProduct] += quantity;
+		Shop.prototype.allShopStock += quantity;
+		var productQuantity =this.stock[nameProduct];
+		console.log("Now", productQuantity, productName, "are in the stock");
+	}
+
+	Shop.prototype.buyProduct = function(nameProduct, quantity) {
+
+	}
+
+	var albert = new Shop();
+	albert.howMuch("apple");
+	albert.stockAdder("apple", 13);
 
 
-	// 		var self = this.run;
-	// var afterRest = this.run.bind(this, distance);
-	// setTimeout(afterRest, 1000);
 
-	// setTimeout(console.log, 11 * 1000);
+// ­функция купить товар, которая принимает название товара и количество и
+// уменьшает из объекта склад такое количество, сколько было заданно в параметрах.
+// Предусмотреть проверку, чтоб в складе не оказалось отрицательное количество
+// товаров
+
+
+
+
+
+
+
+
+
+
+
 
 </script>
 </html>
