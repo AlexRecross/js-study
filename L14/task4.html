@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>task 4</title>
+</head>
+<body>
+	<h4>Task 4</h4>
+		<p>
+			Create a database of cars in the parking lot (minimum 10) using objects, output as a table<br/>
+			<b>Example:</b><br/>
+			<img src="image1.jpg" alt="tablet a database of cars"><br/>
+			<b>Progress:</b>
+			<ol>
+				<li>Create a constructor for a car directory (make, model)</li>
+				<li>Create a constructor for a list of cars in the parking lot (number, owner, link to the guide)</li>
+				<li>Create an array of objects of entries in the directory of car types</li>
+				<li>Create an array of objects for the list of cars in the parking lot</li>
+				<li>Generate the HTML code of the table and output it to the stream using the write method.</li>
+			</ol>
+		</p>
+	<div>
+		<script>
+			document.write('<table border="1" style="border-collapse: collapse; text-align: center;">');
+			document.write('	<tbody>')
+			document.write(
+				'<tr><td>Car</td><td>Number</td><td>Owner Name</td></tr>',
+				'<tr><td id = "car1"></td><td id = "number1"></td><td id = "owner1"></td></tr>',
+				'<tr><td id = "car2"></td><td id = "number2"></td><td id = "owner2"></td></tr>',
+				'<tr><td id = "car3"></td><td id = "number3"></td><td id = "owner3"></td></tr>',
+				'<tr><td id = "car4"></td><td id = "number4"></td><td id = "owner4"></td></tr>',
+				'<tr><td id = "car5"></td><td id = "number5"></td><td id = "owner5"></td></tr>',
+				'<tr><td id = "car6"></td><td id = "number6"></td><td id = "owner6"></td></tr>',
+				'<tr><td id = "car7"></td><td id = "number7"></td><td id = "owner7"></td></tr>',
+				'<tr><td id = "car8"></td><td id = "number8"></td><td id = "owner8"></td></tr>',
+				'<tr><td id = "car9"></td><td id = "number9"></td><td id = "owner9"></td></tr>',
+				'<tr><td id = "car10"></td><td id = "number10"></td><td id = "owner10"></td></tr>',
+				);
+			document.write('	</tbody>');
+			document.write('</table>');
+		</script>
+	</div>
+</body>
+<script type="text/javascript">
+	var arrCarBrand = [
+		"BMW",
+		"BA3",
+		"Suzuki",
+		"Shkoda"
+	],
+	arrModelBMW = [
+		"X5",
+		"X7",
+		"E40",
+		"Z3",
+		"Z4",
+		"X1",
+		"i8",
+		"M5"
+	],
+	arrModelBA3 = [
+		"2101",
+		"2103",
+		"2104",
+		"2105",
+		"2106",
+		"2107",
+		"2109",
+		"21099"
+	],
+	arrModelSuzuki = [
+		"Jimny",
+		"Swift",
+		"Vitara",
+		"Ignis",
+		"S-Cross",
+		"SX-4",
+		"Alto",
+		"Celerio"
+	],
+	arrModelShkoda = [
+		"Fabia",
+		"Octavia",
+		"SuperB",
+		"Scala",
+		"Kamiq",
+		"Kodiaq",
+		"Yetti",
+		"CitiGo"
+	],
+	arrCarNumberLetters = ["AK","AB", "AC", "AE", "AH", "AM", "AO", "AP", "AT", "AI", "AA", "BA",
+	"BC", "BB","BE", "BH", "BI", "BK", "BM", "BO", "AX", "BT","BX", "CA", "CB", "CE", "CH"],
+
+	arrName = [ "Tony Stark", "Steve Rogers", "Bruce Banner", "Nick Fury", "Clint Barton", "Natasha Romanoff", "Sam Wilson",
+	"Peter Quill", "Scott Lang", "Peter Parker", "Stephen Strange", "Wanda Maximoff", "Thor Odinson", "Bruce Wayne"];
+
+	function genRandom (from = 1, to = 11) {
+		return Math.floor(Math.random() * (from - to) + to);
+	}
+
+	function Car(){
+		this.brand = arrCarBrand[genRandom(0, arrCarBrand.length-1)];
+		if(this.brand == "BMW") {
+			this.model = arrModelBMW[genRandom(0, arrModelBMW.length-1)];
+		}
+		if(this.brand == "BA3") {
+			this.model = arrModelBA3[genRandom(0, arrModelBA3.length-1)];
+		}
+		if(this.brand == "Suzuki") {
+			this.model = arrModelSuzuki[genRandom(0, arrModelSuzuki.length-1)];
+		}
+		if(this.brand == "Shkoda") {
+			this.model = arrModelShkoda[genRandom(0, arrModelShkoda.length-1)];
+		}
+	}
+
+	function genCarGuideArray(quantity = 50) {
+		var arrCar = [];
+
+		function genCar (){
+			var x = new Car;
+			arrCar.push(x);
+		}
+		for (var i = 0; i < quantity; i++){
+			genCar();
+		}
+		return arrCar;
+	}
+
+	function carNumberGenerator(){
+		var x = genRandom(100, 999) + " "+genRandom(10, 99) + " "+ arrCarNumberLetters[genRandom(0, arrCarNumberLetters.length-1)];
+		return x;
+	}
+
+	var carGuideArray = genCarGuideArray();
+
+	function CarOnParking(number, owner,linkToTheGuide){
+		this.car = carGuideArray[genRandom(0, carGuideArray.length-1)];
+		this.number = carNumberGenerator();
+		this.owner = arrName[genRandom(0, arrName.length-1)];
+	}
+
+	function genArrParking(quantity = 10) {
+		var arrPark = [];
+
+		function genPark(){
+			var z = new CarOnParking;
+			arrPark.push(z);
+		}
+		for (var i = 0; i < quantity; i++){
+			genPark();
+		}
+		return arrPark;
+	}
+
+	var arrParking = genArrParking();
+
+	document.getElementById('car1').innerHTML =arrParking[0].car.brand +" "+arrParking[0].car.model;
+	document.getElementById("number1").innerHTML =arrParking[0].number;
+	document.getElementById("owner1").innerHTML =arrParking[0].owner;
+
+	document.getElementById('car2').innerHTML =arrParking[1].car.brand +" "+arrParking[1].car.model;
+	document.getElementById("number2").innerHTML =arrParking[1].number;
+	document.getElementById("owner2").innerHTML =arrParking[1].owner;
+
+	document.getElementById('car3').innerHTML =arrParking[2].car.brand +" "+arrParking[2].car.model;
+	document.getElementById("number3").innerHTML =arrParking[2].number;
+	document.getElementById("owner3").innerHTML =arrParking[2].owner;
+
+	document.getElementById('car4').innerHTML =arrParking[3].car.brand +" "+arrParking[3].car.model;
+	document.getElementById("number4").innerHTML =arrParking[3].number;
+	document.getElementById("owner4").innerHTML =arrParking[3].owner;
+
+	document.getElementById('car5').innerHTML =arrParking[4].car.brand +" "+arrParking[4].car.model;
+	document.getElementById("number5").innerHTML =arrParking[4].number;
+	document.getElementById("owner5").innerHTML =arrParking[4].owner;
+
+	document.getElementById('car6').innerHTML =arrParking[5].car.brand +" "+arrParking[5].car.model;
+	document.getElementById("number6").innerHTML =arrParking[5].number;
+	document.getElementById("owner6").innerHTML =arrParking[5].owner;
+
+	document.getElementById('car7').innerHTML =arrParking[6].car.brand +" "+arrParking[6].car.model;
+	document.getElementById("number7").innerHTML =arrParking[6].number;
+	document.getElementById("owner7").innerHTML =arrParking[6].owner;
+
+	document.getElementById('car8').innerHTML =arrParking[7].car.brand +" "+arrParking[7].car.model;
+	document.getElementById("number8").innerHTML =arrParking[7].number;
+	document.getElementById("owner8").innerHTML =arrParking[7].owner;
+
+	document.getElementById('car9').innerHTML =arrParking[8].car.brand +" "+arrParking[8].car.model;
+	document.getElementById("number9").innerHTML =arrParking[8].number;
+	document.getElementById("owner9").innerHTML =arrParking[8].owner;
+
+	document.getElementById('car10').innerHTML =arrParking[9].car.brand +" "+arrParking[9].car.model;
+	document.getElementById("number10").innerHTML =arrParking[9].number;
+	document.getElementById("owner10").innerHTML =arrParking[9].owner;
+</script>
+</html>
