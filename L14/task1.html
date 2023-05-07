@@ -65,17 +65,15 @@
 <script type="text/javascript">
 	//part 1 "Rabbit"
 
-	function Rabbit (arguments) {
-		this.color = arguments;
-		this.paintRabbit = function(arguments){
-			this.color = arguments;
+	function Rabbit (rabbitColor) {
+		this.color = rabbitColor;
+		this.paintRabbit = function(rabbitNewColor){
+			this.color = rabbitNewColor;
 		}
 	}
 
 	var x = new Rabbit("white");
-	console.log("x", x);
 	var y = new Rabbit("black");
-	console.log("y", y);
 	console.log("Let paint all rabbit in Gold");
 	x.paintRabbit("Gold");
 	console.log("x", x);
@@ -84,19 +82,19 @@
 
 	//part 2 "Pupil"
 
-	function Pupil (arguments){
-		this.name = arguments;
+	function Pupil (pupilName){
+		this.name = pupilName;
 		this.scoreArr = [];
-		this.scoreAdder = function(arguments){
-			this.scoreArr.push(arguments);
+		this.scoreAdder = function(pupilScore){
+			this.scoreArr.push(pupilScore);
 		}
 	}
 
 	//part 3 "Horse"
 
 
-	function Horse (arguments) {
-		this.name = arguments;
+	function Horse (horseName) {
+		this.name = horseName;
 		this.mileage = 0;
 	}
 
@@ -127,22 +125,20 @@
 	Mustang.prototype.constructor = Mustang;
 
 	Mustang.prototype.run = function(distance) {
-		if(distance > 0){
-			if (this.fatigue < 10) {
-				// Horse.prototype.run.call(this, 1);
-				this.fatigue++;
-				// console.log("Mustang", this.name, "pass the 1km");
-				this.run(distance -1);
-			} else {
-				console.log("Mustang", this.name, "is start resting");
-				var self = this;
-				setTimeout(function(){
-					console.log("Mustang", this.name, self.name, "get rested");
-					self.fatigue = 0;
-					self.run(distance);
-				}, 1000);
-
-			}
+		if(distance < 0){return}
+		if (this.fatigue < 10) {
+			// Horse.prototype.run.call(this, 1);
+			this.fatigue++;
+			// console.log("Mustang", this.name, "pass the 1km");
+			this.run(distance -1);
+		} else {
+			console.log("Mustang", this.name, "is start resting");
+			var self = this;
+			setTimeout(function(){
+				console.log("Mustang", this.name, self.name, "get rested");
+				self.fatigue = 0;
+				self.run(distance);
+			}, 1000);
 		}
 	}
 	var sivka = new Mustang('Silver');
@@ -151,38 +147,39 @@
 
 //  part 5 "Shop"
 
-	function Shop () {
-		this.stock = {
-			apple: 2,
-			pear: 4, 
-			orange: 6,
-			car: 0,
-		};
-		this.pricing = {
-			apple: 2,
-			pear: 3,
-			orange: 4,
-			car: 0,
-		};
-		this.stockCapacity = 12;
-	}
-	Shop.prototype.allShopStock = 12;
 
-	Shop.prototype.howMuch = function(product) {
-		var productName = product;
-		var productPrice = this.pricing[product];
+	var objGoods = {
+		'apple': 13,
+		'orange': 12,
+		'pear': 22,
+		'onion': 33,
+		'car': 1
+	},
+	objPrices = {
+		'apple': 3.5,
+		'orange': 4.2,
+		'pear': 5.2,
+		'onion': 1.33,
+		'car': 1000
+	}
+	
+	function Shop () {
+		this.stock = {};
+		this.pricing = {};
+		this.stockCapacity = 0;
+	}
+	Shop.prototype.allShopStock = 0;
+
+	Shop.prototype.howMuch = function(nameProduct) {
+		var productName = nameProduct;
+		var productPrice = this.pricing[nameProduct];
 		console.log("Price on", productName, "is", productPrice);
 	}
 
-	Shop.prototype.stockItemAdder = function(nameProduct, quantity) {
+	Shop.prototype.howMany = function(nameProduct) {
 		var productName = nameProduct;
-		var add = quantity;
-		console.log(add, productName, "was added in stock");
-		this.stockCapacity += quantity;
-		this.stock[nameProduct] += quantity;
-		Shop.prototype.allShopStock += quantity;
 		var productQuantity =this.stock[nameProduct];
-		console.log("Now", productQuantity, productName, "are in the stock");
+		console.log(productQuantity, productName, "are in the stock");
 	}
 
 	Shop.prototype.buyProduct = function(nameProduct, quantity) {
@@ -198,29 +195,34 @@
 		console.log(quantitySell, productName, "were sold, and remaind in stock", quantityRemainder, productName);
 	}
 
-	Shop.prototype.stockAdderAll = function(quantity){
-		for (let key in this.stock) {
+	Shop.prototype.stockAdderObj = function(objWhithGoods){
+		for (var key in objWhithGoods){
 			if (this.pricing[key] > 0){
-				this.stock[key] += quantity;
-				this.stockCapacity += quantity;
-				Shop.prototype.allShopStock += quantity;
+				this.stock[key] = objWhithGoods[key];
+				this.stockCapacity += objWhithGoods[key];
+				Shop.prototype.allShopStock += objWhithGoods[key];
+			}else{
+				this.pricing[key] = objWhithGoods[key]-objWhithGoods[key];
 			}
 		}
 	}
 
-	Shop.prototype.priceRiser = function(priceUp){
-		for(let key in this.pricing){
-			this.pricing[key] += priceUp
+	Shop.prototype.priceSetter = function(objWhithPrices){
+		for(let key in objWhithPrices){
+			if (this.pricing[key] > 0){
+				this.pricing[key] += objWhithPrices[key];
+			}else{
+				this.pricing[key] = objWhithPrices[key];
+			}
 		}
 	}
 
 	var albert = new Shop();
+	albert.priceSetter(objPrices);
+	albert.stockAdderObj(objGoods);
 	albert.howMuch("apple");
-	albert.stockItemAdder("apple", 13);
+	albert.howMany("apple");
 	albert.buyProduct( "apple", 10);
-	albert.stockAdderAll(2);
-	albert.priceRiser(2);
-	albert.howMuch("apple");
 
 </script>
 </html>

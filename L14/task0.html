@@ -23,17 +23,17 @@
 		doors: "green",
 	};
 
-	House.paintWindows = function(arguments){
-		this.windows = arguments;
+	House.paintWindows = function(colorWindow){
+		this.windows = colorWindow;
 	}
 
-	House.paintDoors = function(arguments) {
-		this.doors = arguments;
+	House.paintDoors = function(colorDoor) {
+		this.doors = colorDoor;
 	}
 
-	House.paintAll = function(arguments) {
-		this.windows = arguments;
-		this.doors = arguments;
+	House.paintAll = function(colorAll) {
+		this.windows = colorAll;
+		this.doors = colorAll;
 	}
 
 	// second part "Car" object
@@ -42,14 +42,14 @@
 		model: "Mustang" ,
 		brand: "Ford",
 		mileage: 666,
-		drive: function(arguments) {
-			this.mileage +=arguments;
+		drive: function(distance) {
+			this.mileage +=distance;
 		},
 		Ovner: {
 			firstName: "Marco",
 			lastName: "Polo",
-			changeName: function(arguments){
-				this.lastName = arguments;
+			changeName: function(newLastName){
+				this.lastName = newLastName;
 			}
 		}
 	}

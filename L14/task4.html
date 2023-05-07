@@ -6,6 +6,7 @@
 	<title>task 4</title>
 </head>
 <body>
+	<a href="./index.html">Home</a>
 	<h4>Task 4</h4>
 		<p>
 			Create a database of cars in the parking lot (minimum 10) using objects, output as a table<br/>
@@ -26,6 +27,7 @@
 			document.write('	<tbody>')
 			document.write(
 				'<tr><td>Car</td><td>Number</td><td>Owner Name</td></tr>',
+				'<tr><td id = "car0"></td><td id = "number0"></td><td id = "owner0"></td></tr>',
 				'<tr><td id = "car1"></td><td id = "number1"></td><td id = "owner1"></td></tr>',
 				'<tr><td id = "car2"></td><td id = "number2"></td><td id = "owner2"></td></tr>',
 				'<tr><td id = "car3"></td><td id = "number3"></td><td id = "owner3"></td></tr>',
@@ -35,12 +37,12 @@
 				'<tr><td id = "car7"></td><td id = "number7"></td><td id = "owner7"></td></tr>',
 				'<tr><td id = "car8"></td><td id = "number8"></td><td id = "owner8"></td></tr>',
 				'<tr><td id = "car9"></td><td id = "number9"></td><td id = "owner9"></td></tr>',
-				'<tr><td id = "car10"></td><td id = "number10"></td><td id = "owner10"></td></tr>',
 				);
 			document.write('	</tbody>');
 			document.write('</table>');
 		</script>
 	</div>
+	<a href="./index.html">Home</a>
 </body>
 <script type="text/javascript">
 	var arrCarBrand = [
@@ -156,44 +158,12 @@
 
 	var arrParking = genArrParking();
 
-	document.getElementById('car1').innerHTML =arrParking[0].car.brand +" "+arrParking[0].car.model;
-	document.getElementById("number1").innerHTML =arrParking[0].number;
-	document.getElementById("owner1").innerHTML =arrParking[0].owner;
+	for(var i = 0; i < arrParking.length; i ++){
+		document.getElementById('car'+i).innerHTML =arrParking[i].car.brand +" "+arrParking[i].car.model;
+	document.getElementById("number"+i).innerHTML =arrParking[i].number;
+	document.getElementById("owner"+i).innerHTML =arrParking[i].owner;
+	}
 
-	document.getElementById('car2').innerHTML =arrParking[1].car.brand +" "+arrParking[1].car.model;
-	document.getElementById("number2").innerHTML =arrParking[1].number;
-	document.getElementById("owner2").innerHTML =arrParking[1].owner;
 
-	document.getElementById('car3').innerHTML =arrParking[2].car.brand +" "+arrParking[2].car.model;
-	document.getElementById("number3").innerHTML =arrParking[2].number;
-	document.getElementById("owner3").innerHTML =arrParking[2].owner;
-
-	document.getElementById('car4').innerHTML =arrParking[3].car.brand +" "+arrParking[3].car.model;
-	document.getElementById("number4").innerHTML =arrParking[3].number;
-	document.getElementById("owner4").innerHTML =arrParking[3].owner;
-
-	document.getElementById('car5').innerHTML =arrParking[4].car.brand +" "+arrParking[4].car.model;
-	document.getElementById("number5").innerHTML =arrParking[4].number;
-	document.getElementById("owner5").innerHTML =arrParking[4].owner;
-
-	document.getElementById('car6').innerHTML =arrParking[5].car.brand +" "+arrParking[5].car.model;
-	document.getElementById("number6").innerHTML =arrParking[5].number;
-	document.getElementById("owner6").innerHTML =arrParking[5].owner;
-
-	document.getElementById('car7').innerHTML =arrParking[6].car.brand +" "+arrParking[6].car.model;
-	document.getElementById("number7").innerHTML =arrParking[6].number;
-	document.getElementById("owner7").innerHTML =arrParking[6].owner;
-
-	document.getElementById('car8').innerHTML =arrParking[7].car.brand +" "+arrParking[7].car.model;
-	document.getElementById("number8").innerHTML =arrParking[7].number;
-	document.getElementById("owner8").innerHTML =arrParking[7].owner;
-
-	document.getElementById('car9').innerHTML =arrParking[8].car.brand +" "+arrParking[8].car.model;
-	document.getElementById("number9").innerHTML =arrParking[8].number;
-	document.getElementById("owner9").innerHTML =arrParking[8].owner;
-
-	document.getElementById('car10').innerHTML =arrParking[9].car.brand +" "+arrParking[9].car.model;
-	document.getElementById("number10").innerHTML =arrParking[9].number;
-	document.getElementById("owner10").innerHTML =arrParking[9].owner;
 </script>
 </html>

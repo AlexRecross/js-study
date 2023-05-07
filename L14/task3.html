@@ -23,7 +23,7 @@
 			Create an array of Students. Each student contains an average mark, a name, a major subject. The average grade is calculated at the time the student is created from the array of grades. The array of ratings is generated randomly. Display this array as a table.
 		</p>
 		<table>
-				<tbody>
+			<tbody>
 				<tr>
 					<td>№</td>
 					<td>Name</td>
@@ -32,63 +32,63 @@
 				</tr>
 				<tr>
 					<td>1</td>
+					<td id="name0"></td>
+					<td id="major0"></td>
+					<td id="average0"></td>
+				</tr>
+				<tr>
+					<td>2</td>
 					<td id="name1"></td>
 					<td id="major1"></td>
 					<td id="average1"></td>
 				</tr>
 				<tr>
-					<td>2</td>
+					<td>3</td>
 					<td id="name2"></td>
 					<td id="major2"></td>
 					<td id="average2"></td>
 				</tr>
 				<tr>
-					<td>3</td>
+					<td>4</td>
 					<td id="name3"></td>
 					<td id="major3"></td>
 					<td id="average3"></td>
 				</tr>
 				<tr>
-					<td>4</td>
+					<td>5</td>
 					<td id="name4"></td>
 					<td id="major4"></td>
 					<td id="average4"></td>
 				</tr>
 				<tr>
-					<td>5</td>
+					<td>6</td>
 					<td id="name5"></td>
 					<td id="major5"></td>
 					<td id="average5"></td>
 				</tr>
 				<tr>
-					<td>6</td>
+					<td>7</td>
 					<td id="name6"></td>
 					<td id="major6"></td>
 					<td id="average6"></td>
 				</tr>
 				<tr>
-					<td>7</td>
+					<td>8</td>
 					<td id="name7"></td>
 					<td id="major7"></td>
 					<td id="average7"></td>
 				</tr>
 				<tr>
-					<td>8</td>
+					<td>9</td>
 					<td id="name8"></td>
 					<td id="major8"></td>
 					<td id="average8"></td>
 				</tr>
 				<tr>
-					<td>9</td>
+					<td>10</td>
 					<td id="name9"></td>
 					<td id="major9"></td>
 					<td id="average9"></td>
-				</tr>
-				<tr>
-					<td>10</td>
-					<td id="name10"></td>
-					<td id="major10"></td>
-					<td id="average10"></td>
 				</tr>
 			</tbody>
 		</table>
@@ -162,48 +162,11 @@
 
 	var studentsArray = genStudentsArray();
 
-	document.getElementById('name1').innerHTML =studentsArray[0].name;
-	document.getElementById('name2').innerHTML =studentsArray[1].name;
-	document.getElementById('name3').innerHTML =studentsArray[2].name;
-	document.getElementById('name4').innerHTML =studentsArray[3].name;
-	document.getElementById('name5').innerHTML =studentsArray[4].name;
-	document.getElementById('name6').innerHTML =studentsArray[5].name;
-	document.getElementById('name7').innerHTML =studentsArray[6].name;
-	document.getElementById('name8').innerHTML =studentsArray[7].name;
-	document.getElementById('name9').innerHTML =studentsArray[8].name;
-	document.getElementById('name10').innerHTML =studentsArray[9].name;
 
-	document.getElementById('major1').innerHTML =studentsArray[0].major;
-	document.getElementById('major2').innerHTML =studentsArray[1].major;
-	document.getElementById('major3').innerHTML =studentsArray[2].major;
-	document.getElementById('major4').innerHTML =studentsArray[3].major;
-	document.getElementById('major5').innerHTML =studentsArray[4].major;
-	document.getElementById('major6').innerHTML =studentsArray[5].major;
-	document.getElementById('major7').innerHTML =studentsArray[6].major;
-	document.getElementById('major8').innerHTML =studentsArray[7].major;
-	document.getElementById('major9').innerHTML =studentsArray[8].major;
-	document.getElementById('major10').innerHTML =studentsArray[9].major;
-
-	document.getElementById('average1').innerHTML =studentsArray[0].averageRating;
-	document.getElementById('average2').innerHTML =studentsArray[1].averageRating;
-	document.getElementById('average3').innerHTML =studentsArray[2].averageRating;
-	document.getElementById('average4').innerHTML =studentsArray[3].averageRating;
-	document.getElementById('average5').innerHTML =studentsArray[4].averageRating;
-	document.getElementById('average6').innerHTML =studentsArray[5].averageRating;
-	document.getElementById('average7').innerHTML =studentsArray[6].averageRating;
-	document.getElementById('average8').innerHTML =studentsArray[7].averageRating;
-	document.getElementById('average9').innerHTML =studentsArray[8].averageRating;
-	document.getElementById('average10').innerHTML =studentsArray[9].averageRating;
-	// Создать массив студентов.
-	// Каждый студент содержит
-	// среднюю оценку,
-	// имя,
-	// профилирующий предмет
-
-	// Средняя оценка высчитывается в момент создания студента из массива оценок.
-	// Массив оценок создается рандомно.
-
-	// Вывести данный массив в виде таблицы.
-
+	for(var i = 0; i < studentsArray.length; i ++){
+		document.getElementById('name'+i).innerHTML =studentsArray[i].name;
+		document.getElementById('major'+i).innerHTML =studentsArray[i].major;
+		document.getElementById('average'+i).innerHTML =studentsArray[i].averageRating;
+	}
 </script>
 </html>
