@@ -117,14 +117,14 @@
 
 // average rating function
 
-	function genRating (from = 1, to = 11) {
+	function genRandomNumber (from = 1, to = 11) {
 		return Math.floor(Math.random() * (from - to) + to);
 	}
 
 	function arrRating (length = 10, min, max) {
 		var result = [];
 		while (length) {
-			var randNum = genRating(min, max);
+			var randNum = genRandomNumber(min, max);
 			result.push(randNum);
 			--length;
 		} 
@@ -142,8 +142,8 @@
 	}
 
 	function Student () {
-		this.name = arrWithNames[genRating(0, arrWithNames.length - 1)];
-		this.major = arrMajor[genRating(0, arrMajor.length - 1)];
+		this.name = arrWithNames[genRandomNumber(0, arrWithNames.length - 1)];
+		this.major = arrMajor[genRandomNumber(0, arrMajor.length - 1)];
 		this.averageRating = averageRating();
 	}
 

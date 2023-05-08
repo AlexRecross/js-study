@@ -33,59 +33,86 @@
 		<a href="./index.html">Home</a>
 </body>
 <script type="text/javascript">
-	
+
+		var objTest = {
+		'apple': 13,
+		'orange': 12,
+		'pear': 22,
+		'onion': 33,
+		'car': 1
+	};
+
+	// function objToArrKeys(obj){
+	// 	var keys = Object.keys(obj);
+	// 	return keys;
+	// }
+
+	// function objToArrValues(obj){
+	// 	var values = Object.values(obj);
+	// 	return values;
+	// }
+
+	// function arrToObj(arrKeys, arrValues){
+	// 	var obj = {};
+	// 	for(var i = 0; i < arrKeys.length; i++){
+	// 		var key = arrKeys[i];
+	// 		var value = arrValues[i];
+	// 		obj[key] = value;
+	// 	}
+	// 	return obj;
+	// }
+
+	// console.log(objTest);
+
+	// var x = objToArrKeys(objTest);
+	// var y = objToArrValues(objTest);
+	// console.log(x);
+	// console.log(y);
+
+	// var objResult = arrToObj(x, y);
+	// console.log(objResult);
+
+	// MyArray.prototype.push = function(arg){
+	// 	var x = objToArrKeys(this);
+	// 	var y = objToArrValues(this);
+	// 	x.push(arg);
+	// 	z = arrToObj(x, y);
+	// 	return z;
+	// }
+
+
+
+
+// push
+// shift
+// join
+// concat
+// pop
+// unshift
+// slice
+// reverse
+// sort
+// splice
+
+
 	function MyArray(){
-		this.index = function(){
-			Array.prototype.call(this, index);
-			};
-		this.input = function(){
-			Array.prototype.call(this, input);
-			}; 
-		this.length = function(){
-			Array.prototype.call(this, length);
-			};
-	}
-
-	MyArray.prototype.push = function(){
-		Array.prototype.call(this, push)
-	}
-
-	MyArray.prototype.shift = function(){
-		Array.prototype.call(this, shift)
-	}
-
-	MyArray.prototype.join = function(){
-		Array.prototype.call(this, join)
-	}
-
-	MyArray.prototype.concat = function(){
-		Array.prototype.call(this, concat)
-	}
-
-	MyArray.prototype.pop = function(){
-		Array.prototype.call(this, pop)
-	}
-
-	MyArray.prototype.unshift = function(){
-		Array.prototype.call(this, unshift)
-	}
-
-	MyArray.prototype.slice = function(){
-		Array.prototype.call(this, slice)
-	}
-
-	MyArray.prototype.reverse = function(){
-		Array.prototype.call(this, reverse)
-	}
-
-	MyArray.prototype.sort = function(){
-		Array.prototype.call(this, sort)
-	}
-
-	MyArray.prototype.splice = function(){
-		Array.prototype.call(this, splice)
+		// this.index = function(){
+		// 	Array.prototype.call(this, index);
+		// 	};
+		// this.input = function(){
+		// 	Array.prototype.call(this, input);
+		// 	}; 
+		// this.length = function(){
+		// 	Array.prototype.call(this, length);
+		// 	};
 	}
 
 	var a = new MyArray();
+
+	MyArray.prototype.push = function(arg){
+		this + arg;
+	}
+
+
 </script>
 </html>
