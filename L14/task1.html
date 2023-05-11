@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 1</title>
+</head>
+<body>
+	<a href="./index.html">Home</a>
+	<h4>Task 1</h4>
+		<p> For all subsequent tasks, <u>general</u> methods and <u>necessary</u> properties should be moved to prototype.
+			<ol>
+				<li>
+					Create a Rabbit constructor that will create objects that have the "color" property and the "change color" method. The constructor takes as a function parameter the original color of the rabbit. Create two rabbits of different colors and swap them color to gold.
+				</li><br/><br/>
+				<li>
+					Create a Pupil constructor that takes a student name and creates an object with the following properties and methods:<br/>
+					Properties:<br/>
+						<ul>
+							<li>Student's name</li>
+							<li>Score array</li>
+						</ul><br>
+					Methods:<br>
+						<ul><li>put an estimate- which takes as a function parameter an estimate and adds to ratings array</li></ul>
+				</li><br/><br/>
+				<li>
+					Create a <u>Horse</u> constructor that takes a horse name and creates an object with the following properties and methods:<br/>
+					Properties:<br/>
+						<ul>
+							<li>horse name</li>
+							<li>mileage</li>
+							<li>total mileage by all horses</li>
+						</ul>
+					Methods:<br>
+					<ul>
+						<li>a run function that takes a distance as a function parameter, and increases the mileage and total mileage by that distance.</li>
+					</ul>
+					Create two horses and test that the total mileage was equal to the sum of the mileage every horse
+				</li><br/><br/>
+				<li>
+					Modify the Horse constructor as follows: add a property fatigue. Every 1 km run adds 1 unit of fatigue. When tired reaches 10 the horse must rest 1 second. Implement this in a rest method, which takes as a function parameter, the method to be executed after rest and parameters of this method. The task of the method is to display the message “Horse is resting." Implement a delay of 1 second using the SetTimeout function. After which should reset the fatigue and execute the method that came as a parameter functions. For example: a horse must run 8 km. At the moment, fatigue is 4 units. When the horse runs 6 km, fatigue will reach 10 units. On this At this point, the horse must rest for 1 second. Fatigue will then be reset. And after rest, the horse must run the remaining 2 km.
+				</li><br/><br/>
+				<li>
+					Create a Shop constructor that will create objects that have the following properties and methods: <br/>
+					Properties:<br/>
+					<ul>
+						<li>warehouse object (key product name, quantity value)</li>
+						<li>pricing object (key product name, value price)</li>
+						<li>number of goods in stock</li>
+						<li>number of products in all created stores</li>
+					</ul>
+					Methods:<br>
+					<ul>
+						<li>get product price function that takes the name of the product and returns the price</li>
+						<li>a function to get the quantity of a certain product in stock, which takes the name of the product and returns the quantity of this product in stock</li>
+						<li>a function to buy a product that takes the name of the product and the quantity and reduces the quantity from the warehouse object as much as was specified in the parameters. Provide a check that there is no negative quantity of goods in the warehouse.</li>
+						<li>a function to add goods to the warehouse, which takes an object with all the goods to be added and adds them to the warehouse. In the absence of prices for any of the goods, this product does not need to be added.</li>
+						<li>function add rates, which accepts an object of rates to be added and those that are not present to be added, and which present replace</li>
+					</ul>
+				</li>
+			</ol>
+		</p><hr/>
+	<a href="./index.html">Home</a>
+</body>
+<script type="text/javascript">
+	//part 1 "Rabbit"
+
+	function Rabbit (rabbitColor) {
+		this.color = rabbitColor;
+		this.paintRabbit = function(rabbitNewColor){
+			this.color = rabbitNewColor;
+		}
+	}
+
+	var x = new Rabbit("white");
+	var y = new Rabbit("black");
+	console.log("Let paint all rabbit in Gold");
+	x.paintRabbit("Gold");
+	console.log("x", x);
+	y.paintRabbit("Gold");
+	console.log("y", y);
+
+	//part 2 "Pupil"
+
+	function Pupil (pupilName){
+		this.name = pupilName;
+		this.scoreArr = [];
+		this.scoreAdder = function(pupilScore){
+			this.scoreArr.push(pupilScore);
+		}
+	}
+
+	//part 3 "Horse"
+
+
+	function Horse (horseName) {
+		this.name = horseName;
+		this.mileage = 0;
+	}
+
+	Horse.prototype.allHorseMileage = 0;
+
+	Horse.prototype.run = function(distance){
+		this.mileage += distance;
+		Horse.prototype.allHorseMileage += distance;
+	}
+
+	var a = new Horse("Marta");
+	var b = new Horse("Martin");
+	a.run(13);
+	a.run(17);
+	b.run(16);
+	b.run(12);
+	console.log(a);
+	console.log(b);
+
+	// part 4 upgrade "Horse"
+
+	function Mustang (name) {
+		Horse.call(this, name);
+		this.fatigue = 0;
+	}
+
+	Mustang.prototype = Object.create(Horse.prototype);
+	Mustang.prototype.constructor = Mustang;
+
+	Mustang.prototype.run = function(distance) {
+		if(distance < 0){return}
+		if (this.fatigue < 10) {
+			// Horse.prototype.run.call(this, 1);
+			this.fatigue++;
+			// console.log("Mustang", this.name, "pass the 1km");
+			this.run(distance -1);
+		} else {
+			console.log("Mustang", this.name, "is start resting");
+			var self = this;
+			setTimeout(function(){
+				console.log("Mustang", this.name, self.name, "get rested");
+				self.fatigue = 0;
+				self.run(distance);
+			}, 1000);
+		}
+	}
+	var sivka = new Mustang('Silver');
+	var burka = new Mustang('Gold');
+	burka.run(11);
+
+//  part 5 "Shop"
+
+
+	var objGoods = {
+		'apple': 13,
+		'orange': 12,
+		'pear': 22,
+		'onion': 33,
+		'car': 1
+	},
+	objPrices = {
+		'apple': 3.5,
+		'orange': 4.2,
+		'pear': 5.2,
+		'onion': 1.33,
+		'car': 1000
+	}
+	
+	function Shop () {
+		this.stock = {};
+		this.pricing = {};
+		this.stockCapacity = 0;
+	}
+	Shop.prototype.allShopStock = 0;
+
+	Shop.prototype.howMuch = function(nameProduct) {
+		var productName = nameProduct;
+		var productPrice = this.pricing[nameProduct];
+		console.log("Price on", productName, "is", productPrice);
+	}
+
+	Shop.prototype.howMany = function(nameProduct) {
+		var productName = nameProduct;
+		var productQuantity =this.stock[nameProduct];
+		console.log(productQuantity, productName, "are in the stock");
+	}
+
+	Shop.prototype.buyProduct = function(nameProduct, quantity) {
+		if(quantity > this.stock[nameProduct]){
+			quantity = this.stock[nameProduct];
+		}
+		this.stock[nameProduct] -= quantity;
+		this.stockCapacity -= quantity;
+		Shop.prototype.allShopStock -= quantity;
+		var productName= nameProduct;
+		var quantitySell = quantity;
+		var quantityRemainder = this.stock[nameProduct];
+		console.log(quantitySell, productName, "were sold, and remaind in stock", quantityRemainder, productName);
+	}
+
+	Shop.prototype.stockAdderObj = function(objWhithGoods){
+		for (var key in objWhithGoods){
+			if (this.pricing[key] > 0){
+				this.stock[key] = objWhithGoods[key];
+				this.stockCapacity += objWhithGoods[key];
+				Shop.prototype.allShopStock += objWhithGoods[key];
+			}else{
+				this.pricing[key] = objWhithGoods[key]-objWhithGoods[key];
+			}
+		}
+	}
+
+	Shop.prototype.priceSetter = function(objWhithPrices){
+		for(let key in objWhithPrices){
+			if (this.pricing[key] > 0){
+				this.pricing[key] += objWhithPrices[key];
+			}else{
+				this.pricing[key] = objWhithPrices[key];
+			}
+		}
+	}
+
+	var albert = new Shop();
+	albert.priceSetter(objPrices);
+	albert.stockAdderObj(objGoods);
+	albert.howMuch("apple");
+	albert.howMany("apple");
+	albert.buyProduct( "apple", 10);
+
+</script>
+</html>

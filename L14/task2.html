@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task2</title>
+</head>
+<body>
+	<a href="./index.html">Home</a>
+	<h4>Task 2</h4>
+		<p>
+			Create a MyArray constructor that creates an object with the following methods and properties:<br/>
+			Methods:<br>
+			<ul>
+				<li><u>push</u></li>
+				<li><u>shift</u></li>
+				<li><u>join</u></li>
+				<li><u>concat</u></li>
+				<li><u>pop</u></li>
+				<li><u>unshift</u></li>
+				<li><u>slice</u></li>
+				<li><u>reverse</u></li>
+				<li><u>sort</u></li>
+				<li><u>splice</u></li>
+			</ul>
+			Properties:<br/>
+			<ul>
+				<li><u>index</u></li>
+				<li><u>input</u></li>
+				<li><u>length</u></li>
+			</ul>
+		</p>
+		<a href="./index.html">Home</a>
+</body>
+<script type="text/javascript">
+
+		var objTest = {
+		'apple': 13,
+		'orange': 12,
+		'pear': 22,
+		'onion': 33,
+		'car': 1
+	};
+
+	// function objToArrKeys(obj){
+	// 	var keys = Object.keys(obj);
+	// 	return keys;
+	// }
+
+	// function objToArrValues(obj){
+	// 	var values = Object.values(obj);
+	// 	return values;
+	// }
+
+	// function arrToObj(arrKeys, arrValues){
+	// 	var obj = {};
+	// 	for(var i = 0; i < arrKeys.length; i++){
+	// 		var key = arrKeys[i];
+	// 		var value = arrValues[i];
+	// 		obj[key] = value;
+	// 	}
+	// 	return obj;
+	// }
+
+	// console.log(objTest);
+
+	// var x = objToArrKeys(objTest);
+	// var y = objToArrValues(objTest);
+	// console.log(x);
+	// console.log(y);
+
+	// var objResult = arrToObj(x, y);
+	// console.log(objResult);
+
+	// MyArray.prototype.push = function(arg){
+	// 	var x = objToArrKeys(this);
+	// 	var y = objToArrValues(this);
+	// 	x.push(arg);
+	// 	z = arrToObj(x, y);
+	// 	return z;
+	// }
+
+
+
+
+// push
+// shift
+// join
+// concat
+// pop
+// unshift
+// slice
+// reverse
+// sort
+// splice
+
+
+	function MyArray(){
+		// this.index = function(){
+		// 	Array.prototype.call(this, index);
+		// 	};
+		// this.input = function(){
+		// 	Array.prototype.call(this, input);
+		// 	}; 
+		// this.length = function(){
+		// 	Array.prototype.call(this, length);
+		// 	};
+	}
+
+	var a = new MyArray();
+
+	MyArray.prototype.push = function(arg){
+		this + arg;
+	}
+
+
+</script>
+</html>

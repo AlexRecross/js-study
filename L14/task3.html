@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 3</title>
+	<style type="text/css">
+
+		table {
+			width: 400px; 
+			border-collapse: collapse;
+		}
+		td, th {
+			padding: 3px;
+			border: 1px solid black;
+		}
+	</style>
+</head>
+<body>
+	<a href="./index.html">Home</a>
+	<h4>Task 3</h4>
+		<p>
+			Create an array of Students. Each student contains an average mark, a name, a major subject. The average grade is calculated at the time the student is created from the array of grades. The array of ratings is generated randomly. Display this array as a table.
+		</p>
+		<table>
+			<tbody>
+				<tr>
+					<td>№</td>
+					<td>Name</td>
+					<td>Major</td>
+					<td>Average rating</td>
+				</tr>
+				<tr>
+					<td>1</td>
+					<td id="name0"></td>
+					<td id="major0"></td>
+					<td id="average0"></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td id="name1"></td>
+					<td id="major1"></td>
+					<td id="average1"></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td id="name2"></td>
+					<td id="major2"></td>
+					<td id="average2"></td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td id="name3"></td>
+					<td id="major3"></td>
+					<td id="average3"></td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td id="name4"></td>
+					<td id="major4"></td>
+					<td id="average4"></td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td id="name5"></td>
+					<td id="major5"></td>
+					<td id="average5"></td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td id="name6"></td>
+					<td id="major6"></td>
+					<td id="average6"></td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td id="name7"></td>
+					<td id="major7"></td>
+					<td id="average7"></td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td id="name8"></td>
+					<td id="major8"></td>
+					<td id="average8"></td>
+				</tr>
+				<tr>
+					<td>10</td>
+					<td id="name9"></td>
+					<td id="major9"></td>
+					<td id="average9"></td>
+				</tr>
+			</tbody>
+		</table>
+		<br/>
+		<a href="./index.html">Home</a>
+</body>
+<script type="text/javascript">
+	var arrWithNames = [
+		'John',
+		'Jack',
+		'Jim',
+		'Hank',
+		'Whore',
+		'Beetch',
+		'Slut',
+	],
+	arrMajor = [
+		"Physical science",
+		"Biology",
+		"Chemistry",
+		"Earth science",
+		"Astronomy",
+		"Mathematics",
+		"Logic",
+	];
+
+// average rating function
+
+	function genRandomNumber (from = 1, to = 11) {
+		return Math.floor(Math.random() * (from - to) + to);
+	}
+
+	function arrRating (length = 10, min, max) {
+		var result = [];
+		while (length) {
+			var randNum = genRandomNumber(min, max);
+			result.push(randNum);
+			--length;
+		} 
+		return result;
+	}
+
+	function averageRating() {
+		var averageRat = 0, arrRat = arrRating()
+		for(var i = 0; i < arrRat.length; i ++) {
+			var item = arrRat[i];
+			averageRat += item;
+			var result = averageRat / arrRat.length;
+		}
+		return result;
+	}
+
+	function Student () {
+		this.name = arrWithNames[genRandomNumber(0, arrWithNames.length - 1)];
+		this.major = arrMajor[genRandomNumber(0, arrMajor.length - 1)];
+		this.averageRating = averageRating();
+	}
+
+	function genStudentsArray(quantity = 10) {
+		arrStudents = [];
+
+		function genStudent (){
+			var x = new Student;
+			arrStudents.push(x);
+		}
+		for (var i = 0; i < quantity; i++){
+			genStudent();
+		}
+		return arrStudents;
+	}
+
+	var studentsArray = genStudentsArray();
+
+
+	for(var i = 0; i < studentsArray.length; i ++){
+		document.getElementById('name'+i).innerHTML =studentsArray[i].name;
+		document.getElementById('major'+i).innerHTML =studentsArray[i].major;
+		document.getElementById('average'+i).innerHTML =studentsArray[i].averageRating;
+	}
+</script>
+</html>
