@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>test</title>
+	<title>L15</title>
 </head>
 <style type="text/css">
 
@@ -12,7 +12,8 @@
 			border: 1px;
 			border-style: solid;
 			overflow: hidden;
-			max-width: 960px;
+			width: 600px;
+			height: 400px;
 			position: relative;
 			margin: auto;
 			object-fit: cover;
@@ -53,8 +54,10 @@
 		Write html page with gallery (you can also call carousel) no javascript frameworks or libraries. The only requirement for the gallery is for it to work and want to be remotely about galleries that you can find on the Internet.<br/><br/>
 		P.S. The recommendation is that the first one does not aggravate the “triggering” events. Quite plain enough with buttons, BUT personally written.
 	</p>
-	
-	<div class="galleryBox"; id="galleryBox1"></div>
+	<div class="gallery">
+		<div class="galleryBox"; id="galleryBox1"></div>
+		<div class="galleryBox"; id="galleryBox2"></div>
+	</div>
 </body>
 <script type="text/javascript">
 
@@ -64,7 +67,7 @@
 	"images/image33.jpg",
 	"images/image44.jpg",
 	"images/image55.jpg"
-	],  idBox1 = "galleryBox1";
+	], array = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20], idBox1 = "galleryBox1", idBox2 = "galleryBox2";
 
 
 	function Gallery (arrWithSrcFoto, idBox){
@@ -81,10 +84,10 @@
 		document.getElementById(this.containerId).innerHTML += buttons;
 		var idArray = [];
 		for(var i = 0; i < this.arrWithImgSrc.length; i++){
-			var x = "image"+i;
+			var x = "image"+i+"."+count;
 			idArray.push(x);
 			var iii = this.arrWithImgSrc[i];
-			var writeCodeInDiv ='<img src="'+iii+'" alt="'+iii+'"; id="image'+i+'"; class="image">';
+			var writeCodeInDiv ='<img src="'+iii+'" alt="'+iii+'"; id="image'+i+"."+count+'"; class="image">';
 			document.getElementById(this.containerId).innerHTML += writeCodeInDiv;
 		}
 		return idArray;
@@ -156,9 +159,13 @@
 		}, 5000);
 	}
 
-	var xxx = new Gallery(arrWithFoto1,idBox1);
-	xxx.autorun();
+	var gallery1 = new Gallery(arrWithFoto1,idBox1);
+	gallery1.autorun();
 
+	var arrWithFoto2 = array.fill("https://placebear.com/640/360", 0, 20);
+
+	var gallery2 = new Gallery(arrWithFoto2, idBox2);
+	gallery2.autorun();
 
 </script>
 </html>
