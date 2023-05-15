@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>test</title>
+</head>
+<style type="text/css">
+
+		.galleryBox {
+			display: block;
+			border: 1px;
+			border-style: solid;
+			overflow: hidden;
+			max-width: 960px;
+			position: relative;
+			margin: auto;
+			object-fit: cover;
+		}
+
+		.image {
+			display: none;
+			height: 100%;
+			width: 100%;
+			}
+
+		.active {
+			display: block;
+		}
+
+		.prev, .next {
+			cursor: pointer;
+			position: absolute;
+			top: 50%;
+			width: auto;
+			padding: 16px;
+			margin-top: -22px;
+			color: white;
+			font-weight: bold;
+			font-size: 18px;
+			transition: 0.6s ease;
+			border-radius: 0 3px 3px 0;
+		}
+
+		.next {
+			right: 0;
+		}
+
+	</style>
+<body>
+	<h2>Gallerey</h2>
+	<p>
+		Write html page with gallery (you can also call carousel) no javascript frameworks or libraries. The only requirement for the gallery is for it to work and want to be remotely about galleries that you can find on the Internet.<br/><br/>
+		P.S. The recommendation is that the first one does not aggravate the “triggering” events. Quite plain enough with buttons, BUT personally written.
+	</p>
+	
+	<div class="galleryBox"; id="galleryBox1"></div>
+</body>
+<script type="text/javascript">
+
+	var arrWithFoto1 =[
+	"images/image11.jpg",
+	"images/image22.jpg",
+	"images/image33.jpg",
+	"images/image44.jpg",
+	"images/image55.jpg"
+	],  idBox1 = "galleryBox1";
+
+
+	function Gallery (arrWithSrcFoto, idBox){
+		this.arrWithImgSrc = arrWithSrcFoto;
+		this.containerId = idBox;
+		this.arrElement = this.genArrayWhithElement(), this.setFirstActive(), this.runButtons();
+	}
+	Gallery.prototype.counter = 0;
+
+	Gallery.prototype.buildGallery = function(){
+		Gallery.prototype.counter += 1;
+		var count= Gallery.prototype.counter;
+		var buttons = '<a class="prev" id="prev'+count+'">❮</a><a class="next" id="next'+count+'">❯</a>'
+		document.getElementById(this.containerId).innerHTML += buttons;
+		var idArray = [];
+		for(var i = 0; i < this.arrWithImgSrc.length; i++){
+			var x = "image"+i;
+			idArray.push(x);
+			var iii = this.arrWithImgSrc[i];
+			var writeCodeInDiv ='<img src="'+iii+'" alt="'+iii+'"; id="image'+i+'"; class="image">';
+			document.getElementById(this.containerId).innerHTML += writeCodeInDiv;
+		}
+		return idArray;
+	}
+
+	Gallery.prototype.genArrayWhithElement = function(){
+		var idArray = this.buildGallery();
+		var elementArray = [];
+		for(var i = 0; i < idArray.length; i++){
+			var x = document.getElementById(idArray[i]);
+			elementArray.push(x);
+		}
+		return elementArray;
+	}
+
+	Gallery.prototype.setFirstActive = function(){
+		this.arrElement[0].classList.add("active");
+	}
+
+	Gallery.prototype.runButtons = function(){
+		var count= Gallery.prototype.counter;
+		var prev = document.getElementById('prev'+count);
+		var next = document.getElementById("next"+count);
+		prev.addEventListener('click', this.activePrev.bind(this));
+		next.addEventListener('click', this.activeNext.bind(this));
+	}
+
+
+	Gallery.prototype.whoActive = function(){
+		for(var i = 0; i< this.arrElement.length; i ++){
+			var x = this.arrElement[i];
+			if(x.className == 'image active'){
+			return i;
+			}
+		}
+	}
+
+	Gallery.prototype.activeNext = function(){
+		var x = this.whoActive();
+		if(x == this.arrElement.length-1){
+			this.arrElement[x].classList.remove("active");
+			this.arrElement[0].classList.add("active");
+		}else{
+			this.arrElement[x].classList.remove("active");
+			x++;
+			this.arrElement[x].classList.add("active");
+		}
+	}
+
+	Gallery.prototype.activePrev = function(){
+		var x = this.whoActive();
+		if(x == 0){
+			this.arrElement[x].classList.remove("active");
+			this.arrElement[this.arrElement.length-1].classList.add("active");
+		}else{
+			this.arrElement[x].classList.remove("active");
+			x--;
+			this.arrElement[x].classList.add("active");
+		}
+	}
+
+	
+
+	Gallery.prototype.autorun = function(){
+		var self = this;
+		self.activeNext();
+		setTimeout(function () {
+			self.autorun()
+		}, 5000);
+	}
+
+	var xxx = new Gallery(arrWithFoto1,idBox1);
+	xxx.autorun();
+
+
+</script>
+</html>
