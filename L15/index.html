@@ -73,7 +73,9 @@
 	function Gallery (arrWithSrcFoto, idBox){
 		this.arrWithImgSrc = arrWithSrcFoto;
 		this.containerId = idBox;
-		this.arrElement = this.genArrayWhithElement(), this.setFirstActive(), this.runButtons();
+		this.elements = this.genArrayWhithElement();
+		this.setFirstActive();
+		this.runButtons();
 	}
 	Gallery.prototype.counter = 0;
 
@@ -104,7 +106,7 @@
 	}
 
 	Gallery.prototype.setFirstActive = function(){
-		this.arrElement[0].classList.add("active");
+		this.elements[0].classList.add("active");
 	}
 
 	Gallery.prototype.runButtons = function(){
@@ -116,36 +118,40 @@
 	}
 
 
-	Gallery.prototype.whoActive = function(){
-		for(var i = 0; i< this.arrElement.length; i ++){
-			var x = this.arrElement[i];
-			if(x.className == 'image active'){
-			return i;
+	Gallery.prototype.getActiveIndex = function(){
+		for(var i = 0; i < this.elements.length; i++){
+			var img = this.elements[i];
+			// var hasClass = Array.prototype.includes.call(img.classList, 'active');
+			// var hasClass = img.getAttribute("class") == 'image active';
+			// var hasClass = img.className == 'image active';
+			// var hasClass = img.classList.contains('active');
+			if(img.classList.contains('active')){
+				return i;
 			}
 		}
 	}
 
 	Gallery.prototype.activeNext = function(){
-		var x = this.whoActive();
-		if(x == this.arrElement.length-1){
-			this.arrElement[x].classList.remove("active");
-			this.arrElement[0].classList.add("active");
+		var x = this.getActiveIndex();
+		if(x == this.elements.length-1){
+			this.elements[x].classList.remove("active");
+			this.elements[0].classList.add("active");
 		}else{
-			this.arrElement[x].classList.remove("active");
+			this.elements[x].classList.remove("active");
 			x++;
-			this.arrElement[x].classList.add("active");
+			this.elements[x].classList.add("active");
 		}
 	}
 
 	Gallery.prototype.activePrev = function(){
-		var x = this.whoActive();
+		var x = this.getActiveIndex();
 		if(x == 0){
-			this.arrElement[x].classList.remove("active");
-			this.arrElement[this.arrElement.length-1].classList.add("active");
+			this.elements[x].classList.remove("active");
+			this.elements[this.elements.length-1].classList.add("active");
 		}else{
-			this.arrElement[x].classList.remove("active");
+			this.elements[x].classList.remove("active");
 			x--;
-			this.arrElement[x].classList.add("active");
+			this.elements[x].classList.add("active");
 		}
 	}
 
