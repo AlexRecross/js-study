@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lights</title>
+
+	<link rel="stylesheet" href="all.css">
+	
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<ul class="list">
+				<li><a href="index.html"> version 0 </a></li>
+				<li class="active" ><a href="lighter-1.html"> herein </a></li>
+				<li><a href="lighter-2.html"> version 2 </a></li>
+				<li><a href="lighter-3.html"> version 3 </a></li>
+				<li><a href="lighter-4.html"> version 4 </a></li>
+			</ul>
+		</header>
+		
+	</div>
+
+	<script type="text/javascript">
+		window.lights = (function(){
+
+			var lights = document.createElement('div'),
+				stage = 0,
+				timeLine = [ 1000, 1000, 1000, 1000, 1000 ],
+				timeout;
+
+			lights.id = 'lights';
+
+			for ( var key = 0; key < 3; key++ ) {
+				lights.innerHTML += '<div class="lamp lamp-'+key+'"></div>';
+			};
+
+			var lamps = lights.getElementsByClassName('lamp');
+
+			document.body.appendChild(lights);
+
+			function changeStage ( newStage ) {
+				stage = newStage;
+				lights.className = 'stage-'+stage;
+			};
+
+			function step ( newStage ) {
+				changeStage( newStage );
+				timeout = setTimeout(function() {
+					step( ++stage%4 );
+				}, timeLine[stage] );
+			};
+
+			return {
+				on: function() {
+					this.off();
+					step( 0 );
+				},
+				off: function() {
+					clearTimeout( timeout );
+					changeStage( -1 );
+				},
+				setTimeLine: function( array ) {
+					if ( array && array.length && array.length > 4 ) {
+						timeLine = array;
+					}
+				}
+			};
+
+		})();
+
+		console.log('lights ready to use', lights, window.lights );
+	</script>
+</body>
+</html>
