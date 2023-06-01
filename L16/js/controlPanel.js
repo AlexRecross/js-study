@@ -1,11 +1,14 @@
-window.ControlPanel = (function	() {
-	//Control panel module
+window.ControlPanel = (function	(Lighter) {
+
+	var Lighter = window.TrafickLighter;
+
 
 	function ControlPanel() {
 		this.parent = document.createElement('div');
 		this.semaforeContainer = document.createElement('div');
 		this.buildTLControlPanel();
 		this.setupHandler();
+		this.addOne();
 	}
 
 	ControlPanel.prototype.buildTLControlPanel = function (position = 'afterbegin') {
@@ -30,4 +33,4 @@ window.ControlPanel = (function	() {
 	}
 
 	return ControlPanel;
-})()
+})(window.TrafickLighter)

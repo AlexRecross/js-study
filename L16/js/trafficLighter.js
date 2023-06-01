@@ -7,9 +7,7 @@ window.TrafficLighter = (function () {
 		this.parent = document.createElement('div');
 		this.parent.classList.add('TrafficLighter');
 		this.counter = 0;
-		this.first = false;
-		this.second = false;
-		this.third = false;
+		this.state = []
 		this.timeout = null;
 		this.render();
 		this.setupHandlers();
@@ -19,9 +17,9 @@ window.TrafficLighter = (function () {
 		this.parent.innerHTML = `
 			<button>✖</button>
 			<div class="semafore">
-				<div class="circle redlight ${this.first ? 'active' : ''}"></div>
-				<div class="circle yellowlight ${this.second ? 'active' : ''}"></div>
-				<div class="circle greenlight ${this.third ? 'active' : ''}"></div>
+				<div class="circle redlight ${this.state[0] ? 'active' : ''}"></div>
+				<div class="circle yellowlight ${this.state[1] ? 'active' : ''}"></div>
+				<div class="circle greenlight ${this.state[2] ? 'active' : ''}"></div>
 			</div>
 			<button>⏵</button>
 			<button>⏸</button>
@@ -38,22 +36,11 @@ window.TrafficLighter = (function () {
 	}
 
 
-	TrafficLighter.prototype.activator = function (first, second, third) {
-		this.first = first;
-		this.second = second;
-		this.third = third;
-		this.render();
-	}
-
 	TrafficLighter.prototype.run = function () {
 		this.counter = ++this.counter % states.length;
-		var state = states[this.counter];
+		var stateConfig = states[this.counter];
 		var delay = timeLines[this.counter];
-		// this.activator(arg);
-		// this.activator.apply(this, state);
-		this.first = state[0];
-		this.second = state[1];
-		this.third = state[2];
+		this.state = stateConfig;
 		this.render();
 		this.timeout = setTimeout(this.run.bind(this), delay);
 	}
