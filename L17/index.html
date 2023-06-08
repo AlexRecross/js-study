@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>L17</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<!-- <h2></h2>
+	<p>The components of the forms are quite interesting for their specific behavior, and also Features of interaction with the user. 	Every front-end developer, sooner or later, encounters the task of “add to project at a non-standard looking but quite standard 	working component of the farm”. That part of the form that collects data from the user but looks like drawn in design.
+		<ol>
+			<li>Implement a custom input model</li>
+			<li>Implement a custom checkbox model</li>
+			<li>Implement a custom radiobutton model</li>
+			<li>Implement a custom select model (difficult/not required/useful)</li>
+		</ol>
+		Each model is kept in a separate file. Create a project (index.html page) to which to connect all created models. On the main page, there should be a form consisting of custom fields (minimum 2 each). In the form, add a button that will display (in the console, for example) entered in the ormu data.
+	</p> -->
+
+		<form name="carForm" action="#" method="get" class="formBox">
+			<h3>Car's form:</h3>
+		<div>
+			<input class="inputText" placeholder="Car's brand" type="text" name="brand" value="">
+		</div>
+		<div>
+			<input class="inputText" placeholder="Car's model" type="text" name="model" value="">
+		</div>
+		<hr/>
+		<div>
+			<h3>Type of fuel:</h3>
+			<div class="radioOption">
+				<input
+					type="radio"
+					name="typeOfFuel"
+					value="Gasolin"
+					id="Gasolin"
+					class= "inputRadio"
+					checked
+				/>
+				<label for="Gasolin" class= "labelRadio">Gasolin</label>
+			</div>
+			<br/>
+			<div class="radioOption">
+				<input
+					type="radio"
+					name="typeOfFuel"
+					value="Diesel"
+					id="Diesel"
+					class= "inputRadio"
+				/>
+				<label for="Diesel" class= "labelRadio">Diesel</label>
+			</div>
+			<br/>
+			<div class="radioOption">
+				<input
+					type="radio"
+					name="typeOfFuel"
+					value="CNG"
+					id="CNG"
+					class= "inputRadio"
+				/>
+				<label for="CNG" class= "labelRadio">CNG</label>
+			</div>
+			<br/>
+			<div class="radioOption">
+				<input
+					type="radio"
+					name="typeOfFuel"
+					value="Electric/Hybrid"
+					id="Electric/Hybrid"
+					class= "inputRadio"
+				/>
+				<label for="Electric/Hybrid" class= "labelRadio">Electric/Hybrid</label>
+			</div>
+			<br/>
+			<div class="radioOption">
+				<input
+					type="radio"
+					name="typeOfFuel"
+					value="Other"
+					id="Other"
+					class= "inputRadio"
+				/>
+				<label for="Other" class= "labelRadio">Other</label>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<h3>Car's condition:</h3>
+			<div class="checkboxOption">
+				<input
+					id="isNew" 
+					value="New"
+					name="isNew"
+					type="checkbox"
+					class="checkboxInput"
+					checked
+				/>
+				<label class="checkboxLabel" for="isNew">New</label>
+			</div>
+			<br/>
+			<div class="checkboxOption">
+				<input
+					id= "isUsed"
+					value="Used"
+					name="isUsed"
+					type="checkbox"
+					class="checkboxInput"
+				/>
+				<label class="checkboxLabel" for="isUsed">Used</label>
+			</div>
+			<br/>
+			<div class="checkboxOption">
+				<input
+					id= "isRestored/Custom"
+					value="Restored/Custom"
+					name="isRestored/Custom"
+					type="checkbox"
+					class="checkboxInput"
+				/>
+				<label class="checkboxLabel" for="isRestored/Custom">Restored/Custom</label>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<h3>Color:</h3>
+			<select name="color">
+				<option value="Black">Black</option>
+				<option value="White">White</option>
+				<option value="Red">Red</option>
+				<option value="Orange">Orange</option>
+				<option value="Yellow">Yellow</option>
+				<option value="Green">Green</option>
+				<option value="Blue">Blue</option>
+				<option value="Indigo">Indigo</option>
+				<option value="Violet">Violet</option>
+			</select>
+		</div>
+		<hr/>
+		<button type="submit" class="buttonOptions">Send</button>
+	</form>
+</body>
+<script src="script.js"></script>
+</script>
+</html>
