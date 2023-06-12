@@ -4,6 +4,10 @@ body {
 	background-color: #eee;
 }
 
+.formBox * {
+	outline: none;
+}
+
 .formBox {
 	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 	margin: 0px 10px 10px 10px;
@@ -14,6 +18,35 @@ body {
 	border-color: black;
 	border-radius: 6px;
 	background-color: #475d69;
+}
+
+.sending {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(51, 51, 51, 0.9) url("img/loading.gif") center / 50px no-repeat;
+	opacity: 1;
+	visibility: visible;
+	transition: all 0.5s ease 0s;
+}
+
+.formInput {
+	outline: none;
+	border-radius: 5px;
+	width: 100%;
+	font-size: 18px;
+	transition: all 0.5s ease 0s;
+}
+
+.formInput:focus {
+	box-shadow: 0 0 20px #d8cfe9d4;
+}
+
+.formInput.error {
+	box-shadow: 0 0 15px red;
 }
 
 /*input text styles*/
@@ -64,6 +97,7 @@ body {
 	height: 16px;
 	border-radius: 50%;
 	background-color: #fff;
+	transition: background-color 0.5s ease 0s;
 }
 
 .inputRadio:checked + .labelRadio::after {
@@ -103,10 +137,22 @@ body {
 	left: 4px;
 	background-color: #fff;
 	border-radius: 4px;
+	transition: background-color 0.5s ease 0s;
 }
 
 .checkboxInput:checked + .checkboxLabel::after {
 	background-color: #818689;
+}
+
+/*input select styles*/
+.inputSelect {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	min-height: 30px;
+	font-size: 18px;
+	cursor: pointer;
+	border-radius: 20px;
 }
 
 /*input button styles*/

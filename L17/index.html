@@ -20,14 +20,21 @@
 
 		<form name="carForm" action="#" method="get" class="formBox">
 			<h3>Car's form:</h3>
-		<div>
-			<input class="inputText" placeholder="Car's brand" type="text" name="brand" value="">
-		</div>
-		<div>
-			<input class="inputText" placeholder="Car's model" type="text" name="model" value="">
-		</div>
-		<hr/>
-		<div>
+			<div>
+				<input class="inputText required formInput" placeholder="Name*" type="text" name="UserName" value="">
+			</div>
+			<div>
+				<input class="inputText required formInput email" placeholder="E-mail*" type="text" name="UserEmail" value="">
+			</div>
+			<hr/>
+			<div>
+				<input class="inputText formInput" placeholder="Car's brand" type="text" name="brand" value="">
+			</div>
+			<div>
+				<input class="inputText formInput" placeholder="Car's model" type="text" name="model" value="">
+			</div>
+			<hr/>
+			<div>
 			<h3>Type of fuel:</h3>
 			<div class="radioOption">
 				<input
@@ -36,7 +43,6 @@
 					value="Gasolin"
 					id="Gasolin"
 					class= "inputRadio"
-					checked
 				/>
 				<label for="Gasolin" class= "labelRadio">Gasolin</label>
 			</div>
@@ -95,7 +101,6 @@
 					name="isNew"
 					type="checkbox"
 					class="checkboxInput"
-					checked
 				/>
 				<label class="checkboxLabel" for="isNew">New</label>
 			</div>
@@ -125,7 +130,7 @@
 		<hr/>
 		<div>
 			<h3>Color:</h3>
-			<select name="color">
+			<select id="colorSelect" name="color" class="inputSelect formInput">
 				<option value="Black">Black</option>
 				<option value="White">White</option>
 				<option value="Red">Red</option>
@@ -138,7 +143,7 @@
 			</select>
 		</div>
 		<hr/>
-		<button type="submit" class="buttonOptions">Send</button>
+		<button type="submit" class="buttonOptions formInput">Send</button>
 	</form>
 </body>
 <script src="script.js"></script>
