@@ -155,8 +155,13 @@ body {
 	border-radius: 20px;
 }
 
-/*input button styles*/
 
+/*checkbox style*/
+.checkbox.error .checkboxLabel::before {
+	box-shadow: 0 0 15px red;
+}
+
+/*input button styles*/
 .buttonOptions {
 	width: 100%;
 	display: flex;
