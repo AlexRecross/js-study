@@ -1,0 +1,113 @@
+body {
+	width: 900px;
+	margin: 0 auto;
+	font-family: fantasy;
+}
+header.list {
+	width: 80%;
+	margin: 0 auto 15px;
+}
+ul.list {
+	padding: 10px;
+	margin: 0 0 10px;
+	text-align: center;
+}
+ul.list>li {
+	display: inline-block;
+	box-shadow: 2px 2px black;
+	border-radius: 5px;
+	background: grey;
+	margin-left: 5px;
+	opacity: 0.7;
+}
+ul.list>li:hover:not(.off) {
+	box-shadow: 3px 3px black;
+	opacity: 0.9;
+}
+ul.list>li:active:not(.off) {
+	box-shadow: 1px 1px black;
+}
+ul.list>li:not(.off)>a {
+	display: block;
+	padding: 5px;
+	text-align: center;
+	text-decoration: none;
+}
+ul.list>li.off {
+	border: 0;
+	color: #000;
+	border-radius: 0;
+	background: #fff;
+	box-shadow: none;
+	padding: 5px 10px;
+}
+
+.active {
+	opacity: 1;
+}
+
+#lights {
+	width: 100px;
+	padding: 10px;
+	border: 2px solid black;
+	border-radius: 9px;
+	margin: 0 auto;
+	background: #212121;
+}
+.lamp {
+	width: 98px;
+	height: 98px;
+	border-radius: 50%;
+	border: 1px solid black;
+	margin-bottom: 10px; 
+}
+
+#lights.stage-0 .lamp-0 {
+	background: red;
+}
+#lights.stage-0 .lamp-1 {
+	background: grey;
+}
+#lights.stage-0 .lamp-2 {
+	background: grey;
+}
+
+#lights.stage-1 .lamp-0 {
+	background: red;
+}
+#lights.stage-1 .lamp-1 {
+	background: yellow;
+}
+#lights.stage-1 .lamp-2 {
+	background: grey;
+}
+
+#lights.stage-2 .lamp-0 {
+	background: grey;
+}
+#lights.stage-2 .lamp-1 {
+	background: grey;
+}
+#lights.stage-2 .lamp-2 {
+	background: green;
+}
+
+#lights.stage-3 .lamp-0 {
+	background: grey;
+}
+#lights.stage-3 .lamp-1 {
+	background: yellow;
+}
+#lights.stage-3 .lamp-2 {
+	background: green;
+}
+
+#lights.stage-4 .lamp-0 {
+
+}
+#lights.stage-4 .lamp-1 {
+
+}
+#lights.stage-4 .lamp-2 {
+
+}

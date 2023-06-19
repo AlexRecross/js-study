@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lights</title>
+
+	<link rel="stylesheet" href="all.css">
+		<style>
+		.lights {
+			width: 30px;
+			padding: 5px;
+			border: 2px solid black;
+			border-radius: 9px;
+			margin: 0 10px;
+			background: #212121;
+			display: inline-block;
+		}
+		.lamp {
+			width: 98%;
+			height: 30px;
+			border-radius: 50%;
+			background: grey;
+			border: 1px solid black;
+			margin-bottom: 5px;
+			opacity: 0.5;
+		}
+		.green {
+			opacity: 1;
+			box-shadow: 2px 2px 2px;
+			background: rgb(54, 173, 39);
+		}
+		.yellow {
+			opacity: 1;
+			box-shadow: 2px 2px 2px;
+			background: rgb(170, 170, 6);
+		}
+		.red {
+			opacity: 1;
+			box-shadow: 2px 2px 2px;
+			background: rgb(173, 6, 70);
+		}
+
+		#lights-place-1 {
+			border-top: 3px solid black;
+		}
+		#lights-place-2 {
+			border-top: 5px double green;
+		}
+		#lights-place-3 {
+			border-top: 3px groove silver;
+		}
+		#lights-place-4 {
+			border-top: 3px inset grey;
+			
+		}
+	</style>
+
+	<script type="text/javascript">
+		!function() {
+
+			function Lighter () {
+				this.curentState = 0;
+				this.states = [
+					[0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[0,1,0],[1,1,0]
+				];
+				this.timeLine = [0,5000,500,2000,5000,2000,500];
+				this.timeout;
+				var element = this.element = document.createElement('div');
+				element.className = 'lights';
+				element.innerHTML = this.template();
+			};
+
+			Lighter.prototype = {
+				constructor: Lighter,
+				template: function() {
+					return '<div class="lamp '+(this.states[this.curentState][0]?'green':'') +'"></div>\
+					<div class="lamp '+(this.states[this.curentState][1]?'yellow':'')+'"></div>\
+					<div class="lamp '+(this.states[this.curentState][2]?'red':'')+'"></div>';
+				},
+				render: function() {
+					this.element.innerHTML = this.template();
+				},
+				nextState: function() {
+					this.curentState = ++this.curentState%this.states.length;
+					this.render();
+				},
+				on: function() {
+					this.nextState();
+					var lighter = this;
+					// this.timeout = setTimeout(function() {
+					// 	lighter.on();
+					// }, this.timeLine[ this.curentState ]);
+					var next = this.on.bind(this);
+					this.timeout = setTimeout( next, this.timeLine[ this.curentState ] );
+				},
+				off: function() {
+					clearTimeout( this.timeout );
+					this.curentState = 0;
+				},
+				init: function( parent ) {
+					if ( parent && parent.nodeName ) {
+						parent.appendChild( this.element );
+						return this;
+					} else console.warn('parent element is not correct', parent );
+				}
+			};
+
+			function Pult ( place ) {
+				this.parent = place;
+				this.list = [];
+			};
+			Pult.prototype = {
+				constructor: Pult,
+				add: function () {
+					var instance = new Lighter;
+					this.list.push( instance );
+					instance.init( this.parent );
+				},
+				remove: function ( num ) {
+					num = num%this.list.length;
+					if( Number(num) === num ) {
+						this.list[num].element.remove();
+						this.list.splice(2,1);
+					}
+				},
+				on: function( num ) {
+					if( this.list[ num ] ) {
+						this.list[num].off();
+						this.list[num].on();
+					}
+				},
+				off: function( num ) {
+					if( this.list[ num ] ) {
+						this.list[num].off();
+					}
+				},
+				onAll: function() {
+					var key = this.list.length;
+					for (;key--;) {
+						this.on( key );
+					}
+				},
+				offAll: function () {
+					var key = this.list.length;
+					for (;key--;) {
+						this.off( key );
+					}
+				}
+			};
+
+			window.onload = function() {
+				window.pults = {
+					first: new Pult( document.getElementById('lights-place-1') ),
+					second: new Pult( document.getElementById('lights-place-2') ),
+					third: new Pult( document.getElementById('lights-place-3') ),
+					fourth: new Pult( document.getElementById('lights-place-4') )
+				};
+				console.log('pults ready', pults);
+				for(var key in pults ){
+					pults[key].add();
+				}
+			};
+		}();
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<ul class="list">
+				<li><a href="index.html"> version 0 </a></li>
+				<li><a href="lighter-1.html"> version 1 </a></li>
+				<li><a href="lighter-2.html"> version 2 </a></li>
+				<li class="active" ><a href="lighter-3.html"> herein </a></li>
+				<li><a href="lighter-4.html"> version 4 </a></li>
+			</ul>
+		</header>
+
+
+		<div id="lights-place-1">
+			<p>Юрисдикция пульта 1</p>
+		</div>
+		<div id="lights-place-2">
+			<p>Юрисдикция пульта 2</p>
+		</div>
+		<div id="lights-place-3">
+			<p>Юрисдикция пульта 3</p>
+		</div>
+		<div id="lights-place-4">
+			<p>Юрисдикция пульта 4</p>
+		</div>
+	</div>
+</body>
+</html>

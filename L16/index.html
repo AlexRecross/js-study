@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lights</title>
+
+	<link rel="stylesheet" href="all.css">
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<ul class="list">
+				<li class="active" ><a href="index.html"> herein </a></li>
+				<li><a href="lighter-1.html"> version 1 </a></li>
+				<li><a href="lighter-2.html"> version 2 </a></li>
+				<li><a href="lighter-3.html"> version 3 </a></li>
+				<li><a href="lighter-4.html"> version 4 </a></li>
+			</ul>
+		</header>
+
+		<div id="lights">
+			<div class="lamp"></div>
+			<div class="lamp"></div>
+			<div class="lamp"></div>
+		</div>
+	</div>
+	<script type="text/javascript">
+
+		var lights = document.getElementById('lights');
+
+		var lamps = lights.getElementsByClassName('lamp');
+
+		var turns = ['green', 'yellow', 'red'];
+
+		var count = 0;
+
+		var nameInterval;
+
+		function onGreen ( lamp ) {
+			lamp.style.background = 'green';
+		};
+
+		function onRed ( lamp ) {
+			lamp.style.background = 'red';
+		};
+
+		function onYellow ( lamp ) {
+			lamp.style.background = 'yellow';
+		};
+
+		function onLamp ( lamp, color ) {
+			lamp.style.background = color;
+		};
+
+		function offLamp ( lamp ) {
+			lamp.style.background = 'grey';
+		};
+
+		function nextLamp () {
+			var current = count;
+			var old = count == 0 ? turns.length-1: count-1;
+			onLamp( lamps[current], turns[current] );
+			offLamp( lamps[old] );
+			count = ++count%turns.length;
+		};
+
+		function action ( time ) {
+			nameInterval = setInterval(function(){
+				nextLamp();
+			},time);
+		};
+
+		function stop () {
+			clearInterval(nameInterval);
+		};
+
+		console.log('lights methods ready to use\n', action, '\n', stop);
+
+	</script>
+</body>
+</html>

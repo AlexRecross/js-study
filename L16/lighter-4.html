@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>lights</title>
+
+    <link rel="stylesheet" href="all.css">
+        <style>
+        .lights {
+            width: 30px;
+            padding: 5px;
+            border: 2px solid black;
+            border-radius: 9px;
+            margin: 0 10px;
+            background: #212121;
+            display: inline-block;
+        }
+        .lamp {
+            width: 98%;
+            height: 30px;
+            border-radius: 50%;
+            background: grey;
+            border: 1px solid black;
+            margin-bottom: 5px;
+            opacity: 0.5;
+        }
+        .green {
+            opacity: 1;
+            box-shadow: 2px 2px 2px;
+            background: rgb(54, 173, 39);
+        }
+        .yellow {
+            opacity: 1;
+            box-shadow: 2px 2px 2px;
+            background: rgb(170, 170, 6);
+        }
+        .red {
+            opacity: 1;
+            box-shadow: 2px 2px 2px;
+            background: rgb(173, 6, 70);
+        }
+
+        #lights-place-1 {
+            border-top: 3px solid black;
+        }
+        #lights-place-2 {
+            border-top: 5px double green;
+        }
+        #lights-place-3 {
+            border-top: 3px groove silver;
+        }
+        #lights-place-4 {
+            border-top: 3px inset grey;
+            
+        }
+    </style>
+    <!-- APP глобальный объкт приложения =)) или интерфейс управления приложением -->
+    <script type="text/javascript">
+        var app = {
+            addPultToPage: function ( option ) {
+                if ( !option.name || app[option.name] ) {
+                    return false;
+                } else {
+                    app[option.name] = new this.PultModel( option );
+                    app[option.name].add();
+                }
+            },
+            get: function ( name ) {
+                return this[name];
+            }
+        };
+    </script>
+
+    <!-- LIGHTER модель светофора -->
+    <script type="text/javascript">
+        app.LighterModel = (function () {
+
+            function Lighter ( option ) {
+                this.curentState = 0;
+                this.states = option.states || [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[0,1,0],[1,1,0] ];
+                this.timeLine = option.timeLine || [0,5000,500,2000,5000,2000,500];
+                this.timeout;
+                var element = this.element = document.createElement('div');
+                element.className = 'lights';
+                element.innerHTML = this.template();
+            };
+
+            Lighter.prototype = {
+                constructor: Lighter,
+                template: function() {
+                    return '<div class="lamp '+(this.states[this.curentState][0]?'green':'') +'"></div>\
+                    <div class="lamp '+(this.states[this.curentState][1]?'yellow':'')+'"></div>\
+                    <div class="lamp '+(this.states[this.curentState][2]?'red':'')+'"></div>';
+                },
+                render: function() {
+                    this.element.innerHTML = this.template();
+                },
+                nextState: function() {
+                    this.curentState = ++this.curentState%this.states.length;
+                    this.render();
+                },
+                on: function() {
+                    this.nextState();
+                    var lighter = this;
+                    var next = this.on.bind(this);
+                    this.timeout = setTimeout( next, this.timeLine[ this.curentState ] );
+                },
+                off: function() {
+                    clearTimeout( this.timeout );
+                    this.curentState = 0;
+                },
+                init: function( parent ) {
+                    if ( parent && parent.nodeName ) {
+                        parent.appendChild( this.element );
+                        return this;
+                    } else console.warn('parent element is not correct', parent );
+                }
+            };
+            return Lighter;
+        })();
+    </script>
+
+    <!-- PULT модель интерфейса управления светофором -->
+    <script type="text/javascript">
+        app.PultModel = (function ( Lighter ) {
+
+            function Pult ( option ) {
+                this.parent = option.parent;
+                this.parent.innerHTML = '<p> Юрисдикция пульта '+option.name+' </p>\
+                <ul class="list" style="float: right;">\
+                    <li class="off"><strong> Пульт '+option.name+' </strong></li>\
+                    <li><button onclick="app.'+option.name+'.add(1)"> add one </button></li>\
+                    <li><button onclick="app.'+option.name+'.remove(0)"> remove one </button></li>\
+                    <li><button onclick="app.'+option.name+'.onAll()"> on </button></li>\
+                    <li><button onclick="app.'+option.name+'.offAll()"> off </button></li>\
+                </ul>';
+                this.list = [];
+                this.lighterOption = {
+                    timeLine: option.timeLine || [0,5000,500,2000,5000,2000,500],
+                    states: option.states || [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[0,1,0],[1,1,0] ],
+                };
+            };
+
+            Pult.prototype = {
+                constructor: Pult,
+                add: function () {
+                    var instance = new Lighter( this.lighterOption );
+                    this.list.push( instance );
+                    instance.init( this.parent );
+                },
+                remove: function ( num ) {
+                    num = num%this.list.length;
+                    if( Number(num) === num ) {
+                        this.list[num].element.remove();
+                        this.list.splice(num,1);
+                    }
+                },
+                on: function( num ) {
+                    if( this.list[ num ] ) {
+                        this.list[num].off();
+                        this.list[num].on();
+                    }
+                },
+                off: function( num ) {
+                    if( this.list[ num ] ) {
+                        this.list[num].off();
+                    }
+                },
+                onAll: function() {
+                    var key = this.list.length;
+                    for (;key--;) {
+                        this.on( key );
+                    }
+                },
+                offAll: function () {
+                    var key = this.list.length;
+                    for (;key--;) {
+                        this.off( key );
+                    }
+                }
+            };
+
+            return Pult;
+        })(app.LighterModel);
+    </script>
+
+    <!-- INIT инициализация приложения -->
+    <script type="text/javascript">
+        window.onload = function () {
+            app.addPultToPage({
+                name: 'first',
+                parent: document.getElementById('lights-place-1'),
+                timeLine: [0,5000,500,2000,5000,2000,500],
+                states: [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,1],[0,1,0],[1,1,0] ],
+            });
+            console.log('pults first ready', app.first);
+
+            app.addPultToPage({
+                name: 'second',
+                parent: document.getElementById('lights-place-2'),
+                timeLine: [0,500,500,500,500,500,500],
+                states: [ [0,0,1],[1,0,1],[1,1,1],[0,1,1],[0,0,1],[0,1,1],[1,1,1] ],
+            });
+            console.log('pults second ready', app.second);
+
+            app.addPultToPage({
+                name: 'third',
+                parent: document.getElementById('lights-place-3'),
+                timeLine: [0,500,500,500,500,500,500],
+                states: [ [0,0,0],[1,0,0],[1,1,0],[0,1,0],[0,0,0],[0,1,0],[1,1,0] ],
+            });
+            console.log('pults third ready', app.third);
+
+            app.addPultToPage({
+                name: 'fourth',
+                parent: document.getElementById('lights-place-4'),
+                timeLine: [0,500,500,500,500,500,500],
+                states: [ [0,1,0],[1,0,0],[0,1,0],[0,0,1],[0,1,0],[1,0,0],[0,1,0] ],
+            });
+            console.log('pults fourth ready', app.fourth);
+        };
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <ul class="list">
+                <li><a href="index.html"> version 0 </a></li>
+                <li><a href="lighter-1.html"> version 1 </a></li>
+                <li><a href="lighter-2.html"> version 2 </a></li>
+                <li><a href="lighter-3.html"> version 3 </a></li>
+                <li class="active"><a href="lighter-4.html"> herein </a></li>
+            </ul>
+        </header>
+
+        <div id="lights-place-1" style="overflow: hidden;"> </div>
+        <div id="lights-place-2" style="overflow: hidden;"> </div>
+        <div id="lights-place-3" style="overflow: hidden;"> </div>
+        <div id="lights-place-4" style="overflow: hidden;"> </div>
+    </div>
+</body>
+</html>

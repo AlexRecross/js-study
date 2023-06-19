@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>lights</title>
+
+	<link rel="stylesheet" href="all.css">
+	<style>
+		#lights-box {
+			padding: 10px;
+			text-align: center;
+		}
+		.lights {
+			width: 100px;
+			padding: 10px;
+			border: 2px solid black;
+			border-radius: 9px;
+			margin: 0 10px;
+			background: #212121;
+			display: inline-block;
+		}
+		.lamp {
+			width: 98px;
+			height: 98px;
+			border-radius: 50%;
+			background: grey;
+			border: 1px solid black;
+			margin-bottom: 10px;
+			opacity: 0.5;
+		}
+		.green {
+			opacity: 1;
+			box-shadow: 2px 2px 2px;
+			background: rgb(54, 173, 39);
+		}
+		.yellow {
+			opacity: 1;
+			box-shadow: 2px 2px 2px;
+			background: rgb(170, 170, 6);
+		}
+		.red {
+			opacity: 1;
+			box-shadow: 2px 2px 2px;
+			background: rgb(173, 6, 70);
+		}
+	</style>
+
+	<script type="text/javascript">
+		!function() {
+
+			var interval,
+				counter = 0,
+				stop = true,
+				prop = [{
+						time: 5000,
+						states: [1,0,0]
+					}, {
+						time: 500,
+						states: [1,1,0]
+					}, {
+						time: 2000,
+						states: [0,1,0]
+					}, {
+						time: 5000,
+						states: [0,0,1]
+					}, {
+						time: 2000,
+						states: [0,1,0]
+					}, {
+						time: 500,
+						states: [1,1,0]
+				}];
+				window.arrayLights;
+
+
+			function Lighter () {
+				this.states = [0,0,0];
+				var element = this.element = document.createElement('div');
+				element.className = 'lights';
+				element.innerHTML = this.template();
+				document.getElementById('lights-box').appendChild(element);
+				this.alo = function( x ) {
+					x = x*x;
+				};
+			};
+
+			Lighter.prototype = {
+				constructor: Lighter,
+				template: function() {
+					return '<div class="lamp '+(this.states[0]?'green':'') +'"></div>\
+					<div class="lamp '+(this.states[1]?'yellow':'')+'"></div>\
+					<div class="lamp '+(this.states[2]?'red':'')+'"></div>';
+				},
+				setState:function( states ) {
+					if ( states && states.length && states.length > 2 ) {
+						this.states = states;
+					}
+				},
+				render: function() {
+					this.element.innerHTML = this.template();
+				}
+			};
+			window.onload = function() {
+				arrayLights = [	new Lighter() ];
+				console.log('Pult ready to use');
+				setInterval(function(){
+					var i = arrayLights.length;
+					while ( i-- ) {
+						arrayLights[i].render();
+					}
+				}, 1000/24);
+			};
+
+			function step ( current ) {
+				var i = arrayLights.length;
+				while ( i-- ) {
+					arrayLights[i].setState( prop[current].states );
+				};
+				setTimeout(function() { !stop && step( ++current%prop.length ); }, prop[current].time);
+			};
+
+			window.on = function() {
+				if( stop ) {
+					stop = false;
+					step( 0 );
+				}
+			};
+
+			window.off = function() {
+				stop = true;
+				var i = arrayLights.length;
+				while ( i-- ) {
+					arrayLights[i].setState( [0,0,0] );
+				};
+			};
+
+			window.addLigter = function ( num ) {
+				while ( num-- ) {
+					arrayLights.push( new Lighter() );
+				}
+			};
+			window.removeLigter = function( lighter ) {
+				lighter = arrayLights.splice( lighter, 1)[0];
+				document.getElementById('lights-box').removeChild( lighter.element );
+			};
+
+		}();
+	</script>
+
+</head>
+<body>
+	<div id="wrapper">
+		<header>
+			<ul class="list">
+				<li><a href="index.html"> version 0 </a></li>
+				<li><a href="lighter-1.html"> version 1 </a></li>
+				<li class="active" ><a href="lighter-2.html"> herein </a></li>
+				<li><a href="lighter-3.html"> version 3 </a></li>
+				<li><a href="lighter-4.html"> version 4 </a></li>
+			</ul>
+			<ul class="list">
+				<li class="off"><strong> Пульт управления </strong></li>
+				<li><button onclick="addLigter(1)">add one</button></li>
+				<li><button onclick="removeLigter(0)">remove one</button></li>
+				<li><button onclick="on()">on</button></li>
+				<li><button onclick="off()">off</button></li>
+			</ul>
+		</header>
+		<div id="lights-box"></div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Lighter-5</title>
+	<style type="text/css">
+
+		.container {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			margin-top: 20px;
+			align-items: flex-end;
+			width: 100%;
+			height: 300px;
+		}
+
+		.buttonPanel button {
+			height: 35px;
+			border-radius: 20px;
+		}
+
+		.buttonPanel{
+			display: flex;
+			justify-content: space-around;
+			flex-direction: column;
+			height: 100%;
+		}
+
+		.semaforeContainer{
+			display: flex;
+			height: 100%;
+		}
+
+
+		.semafore {
+			display: flex;
+			align-items: center;
+			flex-direction: column;
+			justify-content: space-around;
+			background-color: #3a474d;
+			border: 2px solid black;
+			border-radius: 10px;
+			width: 90px;
+			height: 260px;
+			margin-left: 10px;
+			box-shadow: 0px 6px 12px rgba(0,0,0,1);
+		}
+
+		.circle {
+			display: flex;
+			align-items: center;
+			border: 1px solid black;
+			border-radius: 50px;
+			height: 70px;
+			width: 70px;
+			box-shadow: inset 15px 20px 80px 20px rgba(73, 63, 77, 1);
+		}
+
+		.active{
+			box-shadow: inset 10px 8px 20px 0px rgba(73, 63, 77, 1) !important;
+		}
+		.redlight{
+			background-color: #ff1615;
+		}
+
+		.yellowlight{
+			background-color: #ffc902;
+		}
+
+
+		.greenlight{
+			background-color: #03f7a5;
+		}
+
+		
+	</style>
+</head>
+<body>
+	<h4>Traffic lighter p II</h4>
+	<p>Create a traffic light control panel. It is desirable to add the 5th page to the "traffic light project". The remote must be able to add a traffic light and remove, turn on, turn off any (one) of the short-term traffic lights on the page.</p>
+	<p>P.S. Of course, you can use such cases as you see fit.</p>
+	
+</body>
+<script src="js/trafficlighter.js"></script>
+<script src="js/controlpanel.js"></script>
+
+<script type="text/javascript">
+
+	var x = new ControlPanel();
+	var xx = new ControlPanel();
+</script>
+</html>
