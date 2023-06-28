@@ -21,17 +21,21 @@
 		<form name="carForm" action="#" method="get" class="formBox">
 			<h3>Car's form:</h3>
 			<div>
-				<input class="inputText required formInput" placeholder="Name*" type="text" name="UserName" value="">
+				<input class="inputText required formInput firstName" placeholder="First Name*" type="text" name="UserFirstName" value="">
+			</div>
+			<div>
+				<input class="inputText required formInput lastName" placeholder="Last Name*" type="text" name="UserLastName" value="">
 			</div>
 			<div>
 				<input class="inputText required formInput email" placeholder="E-mail*" type="text" name="UserEmail" value="">
 			</div>
+			<div>
+				<input class="inputText required formInput pass" placeholder="Password*" type="password" name="UserPassword" value="">
+			</div>
 			<hr/>
 			<div>
-				<input class="inputText formInput" placeholder="Car's brand" type="text" name="brand" value="">
-			</div>
-			<div>
-				<input class="inputText formInput" placeholder="Car's model" type="text" name="model" value="">
+				<strong>User Phone Number*</strong>
+				<input class="inputText required formInput phone" placeholder="+123-456-7890" type="tel" name="UserPhone" value="">
 			</div>
 			<hr/>
 			<div>
@@ -42,7 +46,7 @@
 					name="typeOfFuel"
 					value="Gasolin"
 					id="Gasolin"
-					class= "inputRadio"
+					class= "inputRadio required"
 				/>
 				<label for="Gasolin" class= "labelRadio">Gasolin</label>
 			</div>
@@ -53,7 +57,7 @@
 					name="typeOfFuel"
 					value="Diesel"
 					id="Diesel"
-					class= "inputRadio"
+					class= "inputRadio required"
 				/>
 				<label for="Diesel" class= "labelRadio">Diesel</label>
 			</div>
@@ -62,33 +66,11 @@
 				<input
 					type="radio"
 					name="typeOfFuel"
-					value="CNG"
-					id="CNG"
-					class= "inputRadio"
-				/>
-				<label for="CNG" class= "labelRadio">CNG</label>
-			</div>
-			<br/>
-			<div class="radioOption">
-				<input
-					type="radio"
-					name="typeOfFuel"
 					value="Electric/Hybrid"
 					id="Electric/Hybrid"
-					class= "inputRadio"
+					class= "inputRadio required"
 				/>
 				<label for="Electric/Hybrid" class= "labelRadio">Electric/Hybrid</label>
-			</div>
-			<br/>
-			<div class="radioOption">
-				<input
-					type="radio"
-					name="typeOfFuel"
-					value="Other"
-					id="Other"
-					class= "inputRadio"
-				/>
-				<label for="Other" class= "labelRadio">Other</label>
 			</div>
 		</div>
 		<hr/>
@@ -100,7 +82,7 @@
 					value="New"
 					name="isNew"
 					type="checkbox"
-					class="checkboxInput"
+					class="checkboxInput required"
 				/>
 				<label class="checkboxLabel" for="isNew">New</label>
 			</div>
@@ -111,7 +93,7 @@
 					value="Used"
 					name="isUsed"
 					type="checkbox"
-					class="checkboxInput"
+					class="checkboxInput required"
 				/>
 				<label class="checkboxLabel" for="isUsed">Used</label>
 			</div>
@@ -122,7 +104,7 @@
 					value="Restored/Custom"
 					name="isRestored/Custom"
 					type="checkbox"
-					class="checkboxInput"
+					class="checkboxInput required"
 				/>
 				<label class="checkboxLabel" for="isRestored/Custom">Restored/Custom</label>
 			</div>
@@ -130,7 +112,7 @@
 		<hr/>
 		<div>
 			<h3>Color:</h3>
-			<select id="colorSelect" name="color" class="inputSelect formInput">
+			<select id="colorSelect" name="color" class="inputSelect formInput required">
 				<option value="Black">Black</option>
 				<option value="White">White</option>
 				<option value="Red">Red</option>
@@ -144,7 +126,7 @@
 		</div>
 		<hr/>
 		<div class="checkbox">
-				<input id="formAgreement" checked type="checkbox" name="agreement" class="checkboxInput required formInput error">
+				<input id="formAgreement" checked type="checkbox" name="agreement" class="checkboxInput required formInput">
 				<label for="formAgreement" class="checkboxLabel"><span>I give my consent to the processing of personal data in accordance with the <br/>
 				<a href="">Terms</a>,<a href="">Privacy Policy</a>,<a href=""> Cookies Policy</a>*</span></label>
 		</div>

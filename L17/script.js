@@ -1,68 +1,128 @@
-document.addEventListener('DOMContentLoaded', function () {
-	
+// document.addEventListener('DOMContentLoaded', function () {
+
 	var carForm = document.forms.carForm;
-	var carBrand = carForm.brand;
-	var carModel = carForm.model;
-	var userName = carForm.UserName;
+	var userFirstName = carForm.UserFirstName;
+	var userLastName = carForm.UserLastName;
 	var userEmail = carForm.UserEmail;
+	var userPassword = carForm.UserPassword;
+	var userPhone = carForm.UserPhone;
 
+// input text interaction
+	// user Last & First Name
+	//first name
 
-	// input text interaction
-	// user Name
-	var userNamePlaceholder = userName.placeholder;
-
-	userName.addEventListener("focus", function() {
-		userName.placeholder = "";
+	var userFirstNamePlaceholder = userFirstName.placeholder;
+	userFirstName.addEventListener("focus", function() {
+		formRemoveError(userFirstName);
+		userFirstName.placeholder = "";
 	});
 
-	carBrand.addEventListener("blur", function() {
-		userName.placeholder = userNamePlaceholder;
+	userFirstName.addEventListener("blur", function() {
+		formRemoveError(userFirstName);
+		if(nameTest(userFirstName)) {
+			formAddError(userFirstName)
+		}
+		userFirstName.placeholder = userFirstNamePlaceholder;
 	});
 
-	// UserEmail
+	userFirstName.addEventListener("change", function() {
+		formRemoveError(userFirstName);
+		if(nameTest(userFirstName)) {
+			formAddError(userFirstName)
+		}
+	});
 
+	//last name
+	var userLastNamePlaceholder = userLastName.placeholder;
+	userLastName.addEventListener("focus", function() {
+		formRemoveError(userLastName);
+		userLastName.placeholder = "";
+	});
+
+	userLastName.addEventListener("blur", function() {
+		formRemoveError(userLastName);
+		if(nameTest(userLastName)) {
+			formAddError(userLastName)
+		}
+		userLastName.placeholder = userLastNamePlaceholder;
+	});
+
+	userLastName.addEventListener("change", function() {
+		formRemoveError(userLastName);
+		if(nameTest(userLastName)) {
+			formAddError(userLastName)
+		}
+	});
+
+	// UserEmail & Password
+	//email
 	var userEmailPlaceholder = userEmail.placeholder;
-
 	userEmail.addEventListener("focus", function() {
+		formRemoveError(userEmail);
 		userEmail.placeholder = "";
 	});
 
 	userEmail.addEventListener("blur", function() {
+		formRemoveError(userEmail);
+		if(emailTest(userEmail)) {
+			formAddError(userEmail)
+		}
 		userEmail.placeholder = userEmailPlaceholder;
 	});
 
-	// cars brand
-
-	var carBrandPlaceholder = carBrand.placeholder;
-
-	carBrand.addEventListener("focus", function() {
-		carBrand.placeholder = "";
+	userEmail.addEventListener("change", function() {
+		formRemoveError(userEmail);
+		if(emailTest(userEmail)) {
+			formAddError(userEmail)
+		}
+	});
+	//password
+	var userPasswordPlaceholder = userPassword.placeholder;
+	userPassword.addEventListener("focus", function() {
+		formRemoveError(userPassword);
+		userPassword.placeholder = "";
+	});
+	userPassword.addEventListener("blur", function() {
+		formRemoveError(userPassword);
+		if(passTest(userPassword)) {
+			formAddError(userPassword)
+		}
+		userPassword.placeholder = userPasswordPlaceholder;
 	});
 
-	carBrand.addEventListener("blur", function() {
-		carBrand.placeholder = carBrandPlaceholder;
+	userPassword.addEventListener("change", function() {
+		formRemoveError(userPassword);
+		if(passTest(userPassword)) {
+			formAddError(userPassword)
+		}
 	});
 
-	// cars model
+// UserPhoneNumber
 
-	var carModelPlaceholder = carModel.placeholder;
-
-	carModel.addEventListener("focus", function() {
-		carModel.placeholder = "";
+	var userPhonePlaceholder = userPhone.placeholder;
+	userPhone.addEventListener("focus", function() {
+		formRemoveError(userPhone);
+		userPhone.placeholder = "";
+	});
+	userPhone.addEventListener("blur", function() {
+		formRemoveError(userPhone);
+		if(numberTest(userPhone)) {
+			formAddError(userPhone)
+		}
+		userPhone.placeholder = userPhonePlaceholder;
 	});
 
-	carModel.addEventListener("blur", function(){
-		carModel.placeholder = carModelPlaceholder;
+	userPhone.addEventListener("change", function() {
+		formRemoveError(userPhone);
+		if(numberTest(userPhone)) {
+			formAddError(userPhone)
+		}
 	});
-
-
-
 	// validation
 	carForm.addEventListener('submit', function() {
 		event.preventDefault();
 
 		var error = formValidate(carForm);
-
 		if (error === 0) {
 			carForm.classList.add('sending');
 		} else {
@@ -78,21 +138,53 @@ document.addEventListener('DOMContentLoaded', function () {
 			var input = formReq[i];
 			formRemoveError(input);
 
-			if (input.value =='') {
-				formAddError(input);
-				error++;
+			if (input.classList.contains('firstName')) {
+				console.log(input.name, input.value);
+				if (nameTest(input)) {
+					formAddError(input);
+					error++;
+				}
 			}
 
-			if (input.getAttribute("type") === "checkbox" && input.checked === false) {
-				formAddError(input);
-				error++;
+			if (input.classList.contains('lastName')) {
+				console.log(input.name, input.value);
+				if (nameTest(input)) {
+					formAddError(input);
+					error++;
+				}
 			}
 
 			if (input.classList.contains('email')) {
+				console.log(input.name, input.value);
 				if (emailTest(input)) {
 					formAddError(input);
 					error++;
 				}
+			}
+
+			if (input.classList.contains('phone')) {
+				console.log(input.name, input.value);
+				if (numberTest(input)) {
+					formAddError(input);
+					error++;
+				}
+			}
+
+			if (input.classList.contains('pass')) {
+				console.log(input.name, input.value);
+				if (passTest(input)) {
+					formAddError(input);
+					error++;
+				}
+			}
+
+			if (input.id === 'formAgreement' && input.checked === false) {
+				formAddError(input);
+				error++;
+			}
+
+			if (input.checked) {
+				console.log(input.name, " checked");
 			}
 		}
 		return error;
@@ -108,8 +200,67 @@ document.addEventListener('DOMContentLoaded', function () {
 		input.classList.remove('error');
 	}
 
+	function nameTest(input) {
+		return !/^[A-Z][A-Za-z]+$/.test(input.value);
+	}
 
 	function emailTest(input) {
-		return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+		if(!/^\.|\.@|&|=|<|>|,|_|-|`|\.\./.test(input.value)){
+			return !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,8})+$/.test(input.value);
+		}
 	}
-});
+
+	function numberTest(input) {
+		return !/(^\+\d{10}|^\+\d{3}-\d{3}-\d{4})/.test(input.value);
+	}
+
+	function passTest(input) {
+		if (passCompareToName(input) && passCompareToEmail(input)){
+		return !/[A-Za-z]+\d+|\d+[A-Za-z]+/.test(input.value);
+		}
+	}
+
+	function passCompareToName(input) {
+		var formReq =  carForm.getElementsByClassName('required');
+		var name = formReq[0].value;
+		var passwordSplit = input.value.match(/\w{4}/gmi)
+		if (passwordSplit == null){
+			formAddError(input)
+			return 0;
+		}else{
+			for(var i = 0; i < passwordSplit.length; i++) {
+				const reg = new RegExp(passwordSplit[i],'ig');
+				console.log(reg);
+				if(reg.test(name)){
+					formAddError(input);
+					console.log('Password vs First Name error')
+					return 0;
+				} else {
+					return 1;
+				}
+			}
+		}
+	}
+
+	function passCompareToEmail(input) {
+		var formReq =  carForm.getElementsByClassName('required');
+		var email = formReq[2].value;
+		var passwordSplit = input.value.match(/\w{4}/gmi)
+		if (passwordSplit == null){
+			formAddError(input)
+			return 0;
+		}else{
+			for(var i = 0; i < passwordSplit.length; i++) {
+				const reg = new RegExp(passwordSplit[i],'ig');
+				console.log(reg);
+				if(reg.test(email)){
+					formAddError(input);
+					console.log('Password vs Email error')
+					return 0;
+				} else {
+					return 1;
+				}
+			}
+		}
+	}
+// });
