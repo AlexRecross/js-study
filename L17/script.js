@@ -1,4 +1,4 @@
-// document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
 
 	var carForm = document.forms.carForm;
 	var userFirstName = carForm.UserFirstName;
@@ -216,7 +216,7 @@
 
 	function passTest(input) {
 		if (passCompareToName(input) && passCompareToEmail(input)){
-		return !/[A-Za-z]+\d+|\d+[A-Za-z]+/.test(input.value);
+		return !/[A-Za-zЀ-ӹ]+\d+|\d+[A-Za-zЀ-ӹ]+/.test(input.value);
 		}
 	}
 
@@ -230,7 +230,6 @@
 		}else{
 			for(var i = 0; i < passwordSplit.length; i++) {
 				const reg = new RegExp(passwordSplit[i],'ig');
-				console.log(reg);
 				if(reg.test(name)){
 					formAddError(input);
 					console.log('Password vs First Name error')
@@ -252,7 +251,6 @@
 		}else{
 			for(var i = 0; i < passwordSplit.length; i++) {
 				const reg = new RegExp(passwordSplit[i],'ig');
-				console.log(reg);
 				if(reg.test(email)){
 					formAddError(input);
 					console.log('Password vs Email error')
@@ -263,4 +261,4 @@
 			}
 		}
 	}
-// });
+});
